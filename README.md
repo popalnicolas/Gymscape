@@ -1,7 +1,7 @@
 # Gymscape :weight_lifting:
 
 ## What is Gymscape
-Gymscape is an android app, which will track your progress in gym. It is based on gym experience, where each excerises from each trainings needed to be written in a notedpad, which is harder to lookup or easily lost. In this app, all progress and previous weight used in excerises can be saved and searched in it, so it can be easily find out, how much weight was used, so user can push his/her progress.
+Gymscape is an android app, which will track your progress in gym. It is based on gym experience, where each excerises from each trainings needed to be written in a notedpad, which is harder to lookup or easily lost. In Gymscape, all progress and previous weight used in excerises can be saved and searched in it, so it can be easily find out, how much weight was used, so user can push his/her progress.
 
 ## MoSCoW requirements
 ### Must Have
