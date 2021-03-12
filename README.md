@@ -7,7 +7,7 @@ Gymscape is an android app, which will track your progress in gym. It is based o
 ### Must Have
 - Calendar with working days
 - List of exercises
-- Weight used and time trained each repetition of the excerise
+- Weight used and time trained each excerise
 - Option to save the progress
 - Option to change weight
 
