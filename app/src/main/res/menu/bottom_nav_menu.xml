@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_timer"
+        android:icon="@drawable/ic_baseline_timer_24"
+        android:title="@string/title_timer" />
+
+    <item
+        android:id="@+id/navigation_exercises"
+        android:icon="@drawable/ic_dumbbells"
+        android:title="@string/title_exercises" />
+
+    <item
+        android:id="@+id/navigation_workout"
+        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:title="@string/title_workout" />
+
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/title_calendar" />
+
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:title="@string/title_profile" />
+
+</menu>

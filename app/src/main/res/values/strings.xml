@@ -1,3 +1,15 @@
 <resources>
-    <string name="app_name">Gymscape</string>
+    <string name="app_name">GymScape</string>
+    <string name="title_activity_main">GymScape</string>
+
+    <string name="title_timer">Timer</string>
+    <string name="title_exercises">Exercises</string>
+    <string name="title_workout">Workout</string>
+    <string name="title_calendar">Calendar</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="username">username</string>
+    <string name="password">password</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
 </resources>
