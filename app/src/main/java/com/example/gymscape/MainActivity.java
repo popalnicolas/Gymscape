@@ -1,6 +1,7 @@
 package com.example.gymscape;
 
 import android.os.Bundle;
+import android.view.Window;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -15,6 +16,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        this.getSupportActionBar().hide();
+        
         setContentView(R.layout.activity_main);
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each

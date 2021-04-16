@@ -3,7 +3,7 @@
 
     <item
         android:id="@+id/navigation_timer"
-        android:icon="@drawable/ic_baseline_timer_24"
+        android:icon="@drawable/ic_stopwatch"
         android:title="@string/title_timer" />
 
     <item
@@ -13,17 +13,17 @@
 
     <item
         android:id="@+id/navigation_workout"
-        android:icon="@drawable/ic_baseline_format_list_bulleted_24"
+        android:icon="@drawable/ic_dumbbelllist"
         android:title="@string/title_workout" />
 
     <item
         android:id="@+id/navigation_calendar"
-        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:icon="@drawable/ic_calendar"
         android:title="@string/title_calendar" />
 
     <item
         android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_baseline_account_circle_24"
+        android:icon="@drawable/ic_user"
         android:title="@string/title_profile" />
 
 </menu>

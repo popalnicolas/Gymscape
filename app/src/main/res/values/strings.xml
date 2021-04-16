@@ -12,4 +12,19 @@
     <string name="password">password</string>
     <string name="register">Register</string>
     <string name="login">Login</string>
+
+    <string name="muscleCore">CORE</string>
+    <string name="muscleChest">CHEST</string>
+    <string name="muscleBack">BACK</string>
+    <string name="muscleBiceps">BICEPS</string>
+    <string name="muscleTriceps">TRICEPS</string>
+    <string name="muscleShoulders">SHOULDERS</string>
+    <string name="muscleLegs">LEGS</string>
+    <string name="muscleGlutes">GLUTES</string>
+    <string name="muscleAll">ALL</string>
+
+    <string name="settings">Settings</string>
+    <string name="stats">Statistics</string>
+    <string name="trophy">Trophies</string>
+    <string name="logout">Logout</string>
 </resources>

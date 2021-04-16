@@ -13,4 +13,5 @@
     <color name="blue">#0f4c75</color>
     <color name="lightBlue">#3282b8</color>
     <color name="whiteBlue">#bbe1fa</color>
+    <color name="whiteBlueWShadow">#8CA9BB</color>
 </resources>
