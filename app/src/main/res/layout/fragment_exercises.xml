@@ -23,6 +23,7 @@
                 android:layout_height="match_parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:onClick="openExercise"
                 app:srcCompat="@drawable/muscle_core" />
             <TextView
                 android:layout_width="match_parent"
@@ -30,7 +31,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleCore"
                 android:fontFamily="@font/poppins"
-                android:textSize="40sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -43,6 +44,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_chest" />
@@ -52,7 +54,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleChest"
                 android:fontFamily="@font/poppins"
-                android:textSize="40sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -65,6 +67,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_back" />
@@ -74,7 +77,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleBack"
                 android:fontFamily="@font/poppins"
-                android:textSize="40sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -92,6 +95,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_biceps" />
@@ -101,7 +105,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleBiceps"
                 android:fontFamily="@font/poppins"
-                android:textSize="32sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -114,6 +118,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_triceps" />
@@ -123,7 +128,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleTriceps"
                 android:fontFamily="@font/poppins"
-                android:textSize="32sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -136,6 +141,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_shoulders" />
@@ -145,7 +151,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleShoulders"
                 android:fontFamily="@font/poppins"
-                android:textSize="22sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
@@ -163,6 +169,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_legs" />
@@ -172,7 +179,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleLegs"
                 android:fontFamily="@font/poppins"
-                android:textSize="40sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -185,6 +192,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_glutes" />
@@ -194,7 +202,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleGlutes"
                 android:fontFamily="@font/poppins"
-                android:textSize="32sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,6 +215,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:onClick="openExercise"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/muscle_all" />
@@ -216,7 +225,7 @@
                 android:textColor="@color/whiteBlueWShadow"
                 android:text="@string/muscleAll"
                 android:fontFamily="@font/poppins"
-                android:textSize="40sp"
+                android:textSize="18sp"
                 android:gravity="center"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
