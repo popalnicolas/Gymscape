@@ -1,211 +1,225 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.exercises.ExercisesFragment">
+    tools:context=".ui.exercises.ExercisesFragment"
+    android:orientation="vertical">
 
-    <!-- width=3*137 height=3*285 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleCore"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_core" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleCore"
+                android:fontFamily="@font/poppins"
+                android:textSize="40sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleCore"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/muscle_core" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleChest"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_chest" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleChest"
+                android:fontFamily="@font/poppins"
+                android:textSize="40sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleBiceps"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/muscleCore"
-        app:srcCompat="@drawable/muscle_biceps" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleBack"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_back" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleBack"
+                android:fontFamily="@font/poppins"
+                android:textSize="40sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleBiceps"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_biceps" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleBiceps"
+                android:fontFamily="@font/poppins"
+                android:textSize="32sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleLegs"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/muscleBiceps"
-        app:srcCompat="@drawable/muscle_legs" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleTriceps"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_triceps" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleTriceps"
+                android:fontFamily="@font/poppins"
+                android:textSize="32sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleChest"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintStart_toEndOf="@+id/muscleCore"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/muscle_chest" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleShoulders"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_shoulders" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleShoulders"
+                android:fontFamily="@font/poppins"
+                android:textSize="22sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="horizontal"
+        android:layout_weight="1">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleLegs"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_legs" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleLegs"
+                android:fontFamily="@font/poppins"
+                android:textSize="40sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleTriceps"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintEnd_toStartOf="@+id/muscleShoulders"
-        app:layout_constraintStart_toEndOf="@+id/muscleBiceps"
-        app:layout_constraintTop_toBottomOf="@+id/muscleChest"
-        app:srcCompat="@drawable/muscle_triceps" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleGlutes"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_glutes" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleGlutes"
+                android:fontFamily="@font/poppins"
+                android:textSize="32sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/muscleGlutes"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintStart_toEndOf="@+id/muscleLegs"
-        app:layout_constraintTop_toBottomOf="@+id/muscleTriceps"
-        app:srcCompat="@drawable/muscle_glutes" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+            <ImageView
+                android:id="@+id/muscleAll"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/muscle_all" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/whiteBlueWShadow"
+                android:text="@string/muscleAll"
+                android:fontFamily="@font/poppins"
+                android:textSize="40sp"
+                android:gravity="center"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
-    <ImageView
-        android:id="@+id/muscleBack"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/muscle_back" />
 
-    <ImageView
-        android:id="@+id/muscleShoulders"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/muscleBack"
-        app:srcCompat="@drawable/muscle_shoulders" />
-
-    <ImageView
-        android:id="@+id/muscleAll"
-        android:layout_width="137dp"
-        android:layout_height="285dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/muscleShoulders"
-        app:srcCompat="@drawable/muscle_all" />
-
-    <TextView
-        android:id="@+id/textCore"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleCore"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleCore"
-        app:layout_constraintEnd_toEndOf="@+id/muscleCore"
-        app:layout_constraintHorizontal_bias="0.269"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textBiceps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleBiceps"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleBiceps"
-        app:layout_constraintEnd_toEndOf="@+id/muscleBiceps"
-        app:layout_constraintStart_toStartOf="@+id/muscleBiceps"
-        app:layout_constraintTop_toBottomOf="@+id/muscleCore" />
-
-    <TextView
-        android:id="@+id/textLegs"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleLegs"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleLegs"
-        app:layout_constraintEnd_toEndOf="@+id/muscleLegs"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/muscleBiceps" />
-
-    <TextView
-        android:id="@+id/textChest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleChest"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleChest"
-        app:layout_constraintEnd_toEndOf="@+id/muscleChest"
-        app:layout_constraintStart_toEndOf="@+id/muscleCore"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textTriceps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleTriceps"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleTriceps"
-        app:layout_constraintEnd_toEndOf="@+id/muscleTriceps"
-        app:layout_constraintStart_toEndOf="@+id/muscleBiceps"
-        app:layout_constraintTop_toBottomOf="@+id/muscleChest" />
-
-    <TextView
-        android:id="@+id/textGlutes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleGlutes"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="38sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/muscleGlutes"
-        app:layout_constraintStart_toEndOf="@+id/muscleLegs"
-        app:layout_constraintTop_toBottomOf="@+id/muscleTriceps" />
-
-    <TextView
-        android:id="@+id/textBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleBack"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toTopOf="@+id/muscleShoulders"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/muscleChest"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textShoulders"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleShoulders"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="22sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleShoulders"
-        app:layout_constraintEnd_toEndOf="@+id/muscleShoulders"
-        app:layout_constraintStart_toStartOf="@+id/muscleShoulders"
-        app:layout_constraintTop_toBottomOf="@+id/muscleBack" />
-
-    <TextView
-        android:id="@+id/textAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
-        android:fontFamily="@font/poppins"
-        android:text="@string/muscleAll"
-        android:textColor="@color/whiteBlueWShadow"
-        android:textSize="38sp"
-        app:layout_constraintBottom_toBottomOf="@+id/muscleAll"
-        app:layout_constraintEnd_toEndOf="@+id/muscleAll"
-        app:layout_constraintStart_toStartOf="@+id/muscleAll"
-        app:layout_constraintTop_toBottomOf="@+id/muscleShoulders" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
