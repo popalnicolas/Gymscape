@@ -1,16 +1,19 @@
 package com.example.gymscape.ui.exerciselist;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.widget.Toast;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
+import com.example.gymscape.ui.IntentExtraEnum;
+import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
 
 import java.util.ArrayList;
 
@@ -25,8 +28,11 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
+        this.getSupportActionBar().setTitle(getResources().getString(R.string.title_workout));
+        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
+
         Intent intent = getIntent();
-        int category = intent.getIntExtra("exercise", 0);
+        int category = intent.getIntExtra(IntentExtraEnum.CATEGORY.toString(), 0);
 
         viewModel = new ViewModelProvider(this).get(ExerciseViewModel.class);
 
@@ -49,9 +55,8 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        /*Intent toSpecificExercise = new Intent(this, ExerciseActivity.class);
-        toSpecificExercise.putExtra("specificExercise", adapter.exercises.get(position).getId());
-        startActivity(toSpecificExercise);*/
-        Toast.makeText(this, "" + clickedItemIndex, Toast.LENGTH_SHORT).show();
+        Intent toSpecificExercise = new Intent(this, SpecificExerciseActivity.class);
+        toSpecificExercise.putExtra(IntentExtraEnum.EXERCISE.toString(), clickedItemIndex);
+        startActivity(toSpecificExercise);
     }
 }
