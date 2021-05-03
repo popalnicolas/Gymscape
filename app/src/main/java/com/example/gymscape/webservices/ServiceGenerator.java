@@ -11,7 +11,7 @@ public class ServiceGenerator {
         if(exerciseApi == null)
         {
             exerciseApi = new Retrofit.Builder()
-                    .baseUrl("http://nicolas.popal.cz/")
+                    .baseUrl("https://run.mocky.io/v3/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build()
                     .create(ExerciseApi.class);

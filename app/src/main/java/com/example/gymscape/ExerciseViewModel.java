@@ -1,11 +1,13 @@
 package com.example.gymscape;
 
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.webservices.ExerciseRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ExerciseViewModel extends ViewModel {
@@ -17,28 +19,27 @@ public class ExerciseViewModel extends ViewModel {
         exerciseRepository = ExerciseRepository.getInstance();
     }
 
-    LiveData<Exercise> getExercise()
+    LiveData<List<Exercise>> getExercises()
     {
-        return exerciseRepository.getExerciseData();
+        return exerciseRepository.getExercisesData();
     }
 
-    Exercise getExerciseInClass()
+    LiveData<List<Exercise>> getExerciseByCategory(int category)
     {
-        return exerciseRepository.getExerciseData().getValue();
+        if(category == 0)
+            return exerciseRepository.getExercisesData();
+
+        ArrayList<Exercise> catExercises = new ArrayList<>();
+        for(Exercise exercise : exerciseRepository.getExercisesData().getValue())
+        {
+            if(exercise.getCategory() == category)
+                catExercises.add(exercise);
+        }
+        return new MutableLiveData<List<Exercise>>(catExercises);
     }
 
-    LiveData<List<Exercise>> getAllExercises()
+    public void setExercise()
     {
-        return exerciseRepository.getAllExerciseData();
-    }
-
-    public void setExercise(int id)
-    {
-        exerciseRepository.setExerciseData(id);
-    }
-
-    public void setAllExercises(int cat)
-    {
-        exerciseRepository.setAllExerciseData(cat);
+        exerciseRepository.setAllExercisesData();
     }
 }

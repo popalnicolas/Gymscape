@@ -9,9 +9,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ExerciseApi {
-    @GET("gymscape/index.php")
-    Call<ExerciseResponse> getExercise(@Query("exercise") int id);
-    @GET("gymscape/index.php")
-    Call<List<ExerciseResponse>> getAllExercises(@Query("category") int id);
-    //@POST("gymscape/")
+    @GET("681233d0-255b-4500-9451-758c8c7624df")
+    Call<List<ExerciseResponse>> getExercises();
 }

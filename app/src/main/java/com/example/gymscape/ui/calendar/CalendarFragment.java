@@ -4,7 +4,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,6 +20,8 @@ public class CalendarFragment extends Fragment {
 
     private CalendarViewModel calendarViewModel;
 
+    CalendarView calendarView;
+
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         calendarViewModel =
@@ -30,6 +34,17 @@ public class CalendarFragment extends Fragment {
                 textView.setText(s);
             }
         });
+
+
+        calendarView = root.findViewById(R.id.calendarView);
+
+        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                Toast.makeText(getContext(), "" + dayOfMonth, Toast.LENGTH_SHORT).show();
+            }
+        });
+
         return root;
     }
 }
