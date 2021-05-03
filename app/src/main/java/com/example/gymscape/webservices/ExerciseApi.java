@@ -9,6 +9,6 @@ import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 public interface ExerciseApi {
-    @GET("601d66ee-1cf0-4328-a1e6-a8a230c0509c")
+    @GET("8dea0cee-983c-4cde-8963-be67b6247516")
     Call<List<ExerciseResponse>> getExercises();
 }
