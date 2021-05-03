@@ -1,16 +1,16 @@
-package com.example.gymscape.ui.calendar;
+package com.example.gymscape.ui.main.timer;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CalendarViewModel extends ViewModel {
+public class TimerViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public CalendarViewModel() {
+    public TimerViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is calendar fragment");
+        mText.setValue("This is notifications fragment");
     }
 
     public LiveData<String> getText() {

@@ -1,10 +1,11 @@
-package com.example.gymscape;
+package com.example.gymscape.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 
+import com.example.gymscape.R;
+import com.example.gymscape.ui.exerciselist.ExerciseActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;

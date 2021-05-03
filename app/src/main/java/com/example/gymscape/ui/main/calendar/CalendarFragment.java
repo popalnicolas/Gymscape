@@ -1,4 +1,4 @@
-package com.example.gymscape.ui.calendar;
+package com.example.gymscape.ui.main.calendar;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

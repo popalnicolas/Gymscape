@@ -1,4 +1,4 @@
-package com.example.gymscape;
+package com.example.gymscape.ui.exerciselist;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -24,10 +24,10 @@ public class ExerciseViewModel extends ViewModel {
         return exerciseRepository.getExercisesData();
     }
 
-    LiveData<List<Exercise>> getExerciseByCategory(int category)
+    List<Exercise> getExerciseByCategory(int category)
     {
         if(category == 0)
-            return exerciseRepository.getExercisesData();
+            return exerciseRepository.getExercisesData().getValue();
 
         ArrayList<Exercise> catExercises = new ArrayList<>();
         for(Exercise exercise : exerciseRepository.getExercisesData().getValue())
@@ -35,7 +35,7 @@ public class ExerciseViewModel extends ViewModel {
             if(exercise.getCategory() == category)
                 catExercises.add(exercise);
         }
-        return new MutableLiveData<List<Exercise>>(catExercises);
+        return new ArrayList<Exercise>(catExercises);
     }
 
     public void setExercise()

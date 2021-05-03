@@ -1,4 +1,4 @@
-package com.example.gymscape.ui.workout;
+package com.example.gymscape.ui.main.profile;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.gymscape.R;
 
-public class WorkoutFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
-    private WorkoutViewModel workoutViewModel;
+    private ProfileViewModel profileViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        workoutViewModel =
-                new ViewModelProvider(this).get(WorkoutViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_workout, container, false);
-        final TextView textView = root.findViewById(R.id.text_workout);
-        workoutViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
+        profileViewModel =
+                new ViewModelProvider(this).get(ProfileViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        final TextView textView = root.findViewById(R.id.textUsername);
+        profileViewModel.getText().observe(getViewLifecycleOwner(), new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

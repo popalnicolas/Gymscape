@@ -1,4 +1,4 @@
-package com.example.gymscape.ui.timer;
+package com.example.gymscape.ui.main.timer;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

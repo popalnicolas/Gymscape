@@ -1,4 +1,4 @@
-package com.example.gymscape;
+package com.example.gymscape.ui.exerciselist;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.R;
 
 import java.util.ArrayList;
 

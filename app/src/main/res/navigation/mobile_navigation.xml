@@ -7,31 +7,31 @@
 
     <fragment
         android:id="@+id/navigation_timer"
-        android:name="com.example.gymscape.ui.timer.TimerFragment"
+        android:name="com.example.gymscape.ui.main.timer.TimerFragment"
         android:label="@string/title_timer"
         tools:layout="@layout/fragment_timer" />
 
     <fragment
         android:id="@+id/navigation_exercises"
-        android:name="com.example.gymscape.ui.exercises.ExercisesFragment"
+        android:name="com.example.gymscape.ui.main.exercises.ExercisesFragment"
         android:label="@string/title_exercises"
         tools:layout="@layout/fragment_exercises" />
 
     <fragment
         android:id="@+id/navigation_workout"
-        android:name="com.example.gymscape.ui.workout.WorkoutFragment"
+        android:name="com.example.gymscape.ui.main.workout.WorkoutFragment"
         android:label="@string/title_workout"
         tools:layout="@layout/fragment_workout" />
 
     <fragment
         android:id="@+id/navigation_calendar"
-        android:name="com.example.gymscape.ui.calendar.CalendarFragment"
+        android:name="com.example.gymscape.ui.main.calendar.CalendarFragment"
         android:label="@string/title_calendar"
         tools:layout="@layout/fragment_calendar" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.gymscape.ui.profile.ProfileFragment"
+        android:name="com.example.gymscape.ui.main.profile.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>

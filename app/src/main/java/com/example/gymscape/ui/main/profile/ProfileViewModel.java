@@ -1,16 +1,16 @@
-package com.example.gymscape.ui.workout;
+package com.example.gymscape.ui.main.profile;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class WorkoutViewModel extends ViewModel {
+public class ProfileViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public WorkoutViewModel() {
+    public ProfileViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is workout fragment");
+        mText.setValue("John Doe");
     }
 
     public LiveData<String> getText() {

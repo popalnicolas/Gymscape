@@ -1,24 +1,18 @@
-package com.example.gymscape;
+package com.example.gymscape.ui.exerciselist;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.widget.Adapter;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapter.OnListItemClickListener{
 
@@ -31,8 +25,8 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
 
-        //Intent intent = getIntent();
-        //int category = intent.getIntExtra("exercise", 0);
+        Intent intent = getIntent();
+        int category = intent.getIntExtra("exercise", 0);
 
         viewModel = new ViewModelProvider(this).get(ExerciseViewModel.class);
 
@@ -41,14 +35,16 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         viewModel.setExercise();
-        ArrayList<Exercise> exercises = new ArrayList<>();
-        viewModel.getExercises().observe(this, exerciseCollection ->{
-            exercises.clear();
-            exercises.addAll(exerciseCollection);
-        });
 
+        ArrayList<Exercise> exercises = new ArrayList<>();
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
+
+        viewModel.getExercises().observe(this, exerciseCollection ->{
+            exercises.clear();
+            exercises.addAll(viewModel.getExerciseByCategory(category));
+            adapter.notifyDataSetChanged();
+        });
     }
 
     @Override
@@ -56,5 +52,6 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         /*Intent toSpecificExercise = new Intent(this, ExerciseActivity.class);
         toSpecificExercise.putExtra("specificExercise", adapter.exercises.get(position).getId());
         startActivity(toSpecificExercise);*/
+        Toast.makeText(this, "" + clickedItemIndex, Toast.LENGTH_SHORT).show();
     }
 }

@@ -19,7 +19,7 @@
             android:layout_height="match_parent"
             android:layout_weight="7"
             android:textSize="18sp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="16dp"
             android:textColor="@color/lightBlue"
             android:gravity="center_vertical"
             android:fontFamily="@font/poppins"
