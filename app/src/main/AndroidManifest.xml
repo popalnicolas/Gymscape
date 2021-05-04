@@ -12,12 +12,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymscape"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.exercise.SpecificExerciseActivity"
+        <activity android:name=".ui.newexercise.NewExerciseActivity"
             android:parentActivityName=".ui.exerciselist.ExerciseActivity"/>
+        <activity
+            android:name=".ui.exercise.SpecificExerciseActivity"
+            android:parentActivityName=".ui.exerciselist.ExerciseActivity" />
         <activity
             android:name=".ui.exerciselist.ExerciseActivity"
             android:parentActivityName=".ui.MainActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
             android:label="@string/title_activity_main"
@@ -30,7 +33,7 @@
         </activity>
         <activity
             android:name=".ui.LoginActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

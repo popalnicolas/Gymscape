@@ -4,8 +4,10 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity(tableName = "exercise_table")
-public class Exercise {
+public class Exercise implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;

@@ -2,11 +2,14 @@ package com.example.gymscape.ui.exerciselist;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
@@ -15,7 +18,7 @@ import java.util.ArrayList;
 
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHolder> {
 
-    private ArrayList<Exercise> exercisesList;
+    public ArrayList<Exercise> exercisesList;
     final private OnListItemClickListener mOnListItemClickListener;
 
     ExerciseAdapter(ArrayList<Exercise> exercises, OnListItemClickListener listener){
@@ -79,7 +82,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-            mOnListItemClickListener.onListItemClick(exercisesList.get(getAdapterPosition()).getId(), exercisesList.get(getAdapterPosition()).getPosition());
+            mOnListItemClickListener.onListItemClick(getAdapterPosition(), exercisesList.get(getAdapterPosition()).getPosition());
         }
     }
 

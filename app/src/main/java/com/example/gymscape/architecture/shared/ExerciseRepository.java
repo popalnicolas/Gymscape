@@ -73,9 +73,40 @@ public class ExerciseRepository {
             public void onResponse(Call<List<ExerciseResponse>> call, Response<List<ExerciseResponse>> response) {
                 ArrayList<ExerciseResponse> exerciseResponses = new ArrayList<>(response.body());
                 ArrayList<Exercise> exercises = new ArrayList<>();
-                for(ExerciseResponse exerciseResponse : exerciseResponses)
-                {
+                for (ExerciseResponse exerciseResponse : exerciseResponses) {
                     exercises.add(exerciseResponse.getExercise());
+                }
+                exercisesData.setValue(exercises);
+            }
+
+            @Override
+            public void onFailure(Call<List<ExerciseResponse>> call, Throwable t) {
+
+            }
+        });
+    }
+    public void setAllExercisesData(int category)
+    {
+        ExerciseApi exerciseApi = ServiceGenerator.getExerciseApi();
+        Call<List<ExerciseResponse>> call = exerciseApi.getExercises();
+
+        call.enqueue(new Callback<List<ExerciseResponse>>() {
+            @EverythingIsNonNull
+            @Override
+            public void onResponse(Call<List<ExerciseResponse>> call, Response<List<ExerciseResponse>> response) {
+                ArrayList<ExerciseResponse> exerciseResponses = new ArrayList<>(response.body());
+                ArrayList<Exercise> exercises = new ArrayList<>();
+                if(category != 0) {
+                    for (ExerciseResponse exerciseResponse : exerciseResponses) {
+                        if(exerciseResponse.getExercise().getCategory() == category)
+                            exercises.add(exerciseResponse.getExercise());
+                    }
+                }
+                else
+                {
+                    for (ExerciseResponse exerciseResponse : exerciseResponses) {
+                        exercises.add(exerciseResponse.getExercise());
+                    }
                 }
                 exercisesData.setValue(exercises);
             }

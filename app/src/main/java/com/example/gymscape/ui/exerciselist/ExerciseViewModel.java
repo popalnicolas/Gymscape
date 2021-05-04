@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.architecture.shared.ExerciseRepository;
@@ -40,9 +41,9 @@ public class ExerciseViewModel extends AndroidViewModel {
         return new ArrayList<Exercise>(catExercises);
     }
 
-    public void setExercise()
+    public void setExercise(int category)
     {
-        exerciseRepository.setAllExercisesData();
+        exerciseRepository.setAllExercisesData(category);
     }
 
     /** DATABASE **/

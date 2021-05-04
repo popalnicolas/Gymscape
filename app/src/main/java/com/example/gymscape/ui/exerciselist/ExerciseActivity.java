@@ -3,17 +3,24 @@ package com.example.gymscape.ui.exerciselist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
+import com.example.gymscape.ui.LoginActivity;
+import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
+import com.example.gymscape.ui.main.exercises.ExercisesFragment;
+import com.example.gymscape.ui.newexercise.NewExerciseActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
@@ -23,6 +30,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
     ArrayList<Exercise> exercises;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,23 +45,30 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
 
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(ExerciseViewModel.class);
 
+        fab = findViewById(R.id.addNewExerciseButton);
+        fab.setOnClickListener(v -> {
+            Intent newProfileIntent = new Intent(this, NewExerciseActivity.class);
+            startActivity(newProfileIntent);
+        });
+
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel.setExercise();
+        viewModel.setExercise(category);
 
         exercises = new ArrayList<>();
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
 
+        //@TODO: FIX data from database are not displayed if new data is not inserted
         viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
             exercises.addAll(viewModel.getExerciseByCategoryDAO(category));
             adapter.notifyDataSetChanged();
         });
 
         viewModel.getExercises().observe(this, exerciseCollection ->{
-            exercises.addAll(viewModel.getExerciseByCategory(category));
+            exercises.addAll(viewModel.getExercises().getValue());
             adapter.notifyDataSetChanged();
         });
     }
@@ -61,16 +76,16 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
     @Override
     public void onListItemClick(int clickedItemIndex, String position) {
         Intent toSpecificExercise = new Intent(this, SpecificExerciseActivity.class);
-        toSpecificExercise.putExtra(UsedEnums.EXERCISE.toString(), clickedItemIndex);
+        toSpecificExercise.putExtra(UsedEnums.EXERCISE.toString(), adapter.exercisesList.get(clickedItemIndex));
         toSpecificExercise.putExtra(UsedEnums.POSITION.toString(), position);
         startActivity(toSpecificExercise);
+        finish();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-        
         exercises.clear();
     }
 }
