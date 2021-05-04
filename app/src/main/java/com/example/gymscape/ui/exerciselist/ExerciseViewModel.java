@@ -1,22 +1,24 @@
 package com.example.gymscape.ui.exerciselist;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.gymscape.Model.Exercise;
-import com.example.gymscape.webservices.ExerciseRepository;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ExerciseViewModel extends ViewModel {
+public class ExerciseViewModel extends AndroidViewModel {
 
     ExerciseRepository exerciseRepository;
 
-    public ExerciseViewModel()
+    public ExerciseViewModel(Application app)
     {
-        exerciseRepository = ExerciseRepository.getInstance();
+        super(app);
+        exerciseRepository = ExerciseRepository.getInstance(app);
     }
 
     LiveData<List<Exercise>> getExercises()
@@ -41,5 +43,40 @@ public class ExerciseViewModel extends ViewModel {
     public void setExercise()
     {
         exerciseRepository.setAllExercisesData();
+    }
+
+    /** DATABASE **/
+    public LiveData<List<Exercise>> getAllExercisesDAO()
+    {
+        return exerciseRepository.getAllExercisesDao();
+    }
+
+    List<Exercise> getExerciseByCategoryDAO(int category)
+    {
+        if(category == 0)
+            return exerciseRepository.getAllExercisesDao().getValue();
+
+        ArrayList<Exercise> catExercises = new ArrayList<>();
+        for(Exercise exercise : exerciseRepository.getAllExercisesDao().getValue())
+        {
+            if(exercise.getCategory() == category)
+                catExercises.add(exercise);
+        }
+        return new ArrayList<Exercise>(catExercises);
+    }
+
+    public void insert(final Exercise exercise)
+    {
+        exerciseRepository.insert(exercise);
+    }
+
+    public void delete(final Exercise exercise)
+    {
+        exerciseRepository.delete(exercise);
+    }
+
+    public void deleteAll()
+    {
+        exerciseRepository.deleteAll();
     }
 }

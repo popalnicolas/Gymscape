@@ -1,20 +1,24 @@
 package com.example.gymscape.ui.exercise;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.ViewModel;
 
 import com.example.gymscape.Model.Exercise;
-import com.example.gymscape.webservices.ExerciseRepository;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class SpecificExerciseViewModel extends ViewModel {
+public class SpecificExerciseViewModel extends AndroidViewModel {
 
     ExerciseRepository exerciseRepository;
 
-    public SpecificExerciseViewModel()
+    public SpecificExerciseViewModel(Application app)
     {
-        exerciseRepository = ExerciseRepository.getInstance();
+        super(app);
+        exerciseRepository = ExerciseRepository.getInstance(app);
     }
 
     LiveData<List<Exercise>> getExercises()
@@ -35,5 +39,22 @@ public class SpecificExerciseViewModel extends ViewModel {
     public void setExercise()
     {
         exerciseRepository.setAllExercisesData();
+    }
+
+    /** DATABASE **/
+
+    LiveData<List<Exercise>> getExercisesDAO()
+    {
+        return exerciseRepository.getAllExercisesDao();
+    }
+
+    Exercise getExerciseDAOById(int exerciseId)
+    {
+        for(Exercise exercise : exerciseRepository.getAllExercisesDao().getValue())
+        {
+            if(exercise.getId() == exerciseId)
+                return exercise;
+        }
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gymscape.webservices;
+package com.example.gymscape.architecture.webservices;
 
 import com.example.gymscape.Model.Exercise;
 
@@ -11,6 +11,6 @@ public class ExerciseResponse {
 
     public Exercise getExercise()
     {
-        return new Exercise(id, name, cat, description, picture);
+        return new Exercise(id, name, cat, description, picture, "webservice");
     }
 }

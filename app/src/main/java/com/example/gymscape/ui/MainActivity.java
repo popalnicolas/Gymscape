@@ -39,55 +39,55 @@ public class MainActivity extends AppCompatActivity {
         if(view.getId() == R.id.muscleCore)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 1);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 1);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleChest)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 2);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 2);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleBack)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 3);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 3);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleBiceps)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 4);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 4);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleTriceps)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 5);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 5);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleShoulders)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 6);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 6);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleLegs)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 7);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 7);
             startActivity(intent);
         }
         else if(view.getId() == R.id.muscleGlutes)
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 8);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 8);
             startActivity(intent);
         }
         else
         {
             Intent intent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(IntentExtraEnum.CATEGORY.toString(), 0);
+            intent.putExtra(UsedEnums.CATEGORY.toString(), 0);
             startActivity(intent);
         }
     }

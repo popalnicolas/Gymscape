@@ -12,7 +12,7 @@ import android.os.Bundle;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
-import com.example.gymscape.ui.IntentExtraEnum;
+import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
 
 import java.util.ArrayList;
@@ -32,9 +32,9 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
         Intent intent = getIntent();
-        int category = intent.getIntExtra(IntentExtraEnum.CATEGORY.toString(), 0);
+        int category = intent.getIntExtra(UsedEnums.CATEGORY.toString(), 0);
 
-        viewModel = new ViewModelProvider(this).get(ExerciseViewModel.class);
+        viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(ExerciseViewModel.class);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.hasFixedSize();
@@ -46,17 +46,22 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
 
+        viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
+            exercises.addAll(viewModel.getExerciseByCategoryDAO(category));
+            adapter.notifyDataSetChanged();
+        });
+
         viewModel.getExercises().observe(this, exerciseCollection ->{
-            exercises.clear();
             exercises.addAll(viewModel.getExerciseByCategory(category));
             adapter.notifyDataSetChanged();
         });
     }
 
     @Override
-    public void onListItemClick(int clickedItemIndex) {
+    public void onListItemClick(int clickedItemIndex, String position) {
         Intent toSpecificExercise = new Intent(this, SpecificExerciseActivity.class);
-        toSpecificExercise.putExtra(IntentExtraEnum.EXERCISE.toString(), clickedItemIndex);
+        toSpecificExercise.putExtra(UsedEnums.EXERCISE.toString(), clickedItemIndex);
+        toSpecificExercise.putExtra(UsedEnums.POSITION.toString(), position);
         startActivity(toSpecificExercise);
     }
 }

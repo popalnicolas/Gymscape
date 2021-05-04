@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".ui.exercise.SpecificExerciseActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:scrollbars="none"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseImage">
+        <LinearLayout
+          android:layout_width="match_parent"
+            android:orientation="vertical"
+          android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/exerciseDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/pavanam"
+                android:padding="24dp"
+                android:text="TextView"
+                android:textColor="@color/whiteBlue"
+                android:layout_marginBottom="140dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/exerciseImage" />
+        </LinearLayout>
+    </ScrollView>
+
     <ImageView
         android:id="@+id/exerciseImage"
         android:layout_width="match_parent"
@@ -14,18 +42,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
-
-    <TextView
-        android:id="@+id/exerciseDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/pavanam"
-        android:padding="24dp"
-        android:text="TextView"
-        android:textColor="@color/whiteBlue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/exerciseImage" />
 
     <TextView
         android:id="@+id/exerciseName"
@@ -39,5 +55,5 @@
         app:layout_constraintBottom_toBottomOf="@+id/exerciseImage"
         app:layout_constraintEnd_toEndOf="@+id/exerciseImage"
         app:layout_constraintStart_toStartOf="@+id/exerciseImage"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/exerciseImage" />
 </androidx.constraintlayout.widget.ConstraintLayout>
