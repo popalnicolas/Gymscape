@@ -48,7 +48,7 @@ public class SpecificExerciseActivity extends AppCompatActivity {
             viewModel.setExercise();
             viewModel.getExercises().observe(this, exercises -> {
                 Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
-                exerciseDescription.setText(exercise.getDescription());
+                exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
                 exerciseName.setText(exercise.getName().toUpperCase());
             });
         }
