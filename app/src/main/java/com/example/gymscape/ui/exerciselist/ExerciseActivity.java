@@ -29,8 +29,9 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
     ExerciseViewModel viewModel;
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
-    ArrayList<Exercise> exercises;
+    ArrayList<Exercise> exercises = new ArrayList<>();
     FloatingActionButton fab;
+    int category;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +42,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
         Intent intent = getIntent();
-        int category = intent.getIntExtra(UsedEnums.CATEGORY.toString(), 0);
+        category = intent.getIntExtra(UsedEnums.CATEGORY.toString(), 0);
 
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(ExerciseViewModel.class);
 
@@ -57,18 +58,11 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
 
         viewModel.setExercise(category);
 
-        exercises = new ArrayList<>();
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
 
-        //@TODO: FIX data from database are not displayed if new data is not inserted
-        viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
-            exercises.addAll(viewModel.getExerciseByCategoryDAO(category));
-            adapter.notifyDataSetChanged();
-        });
-
         viewModel.getExercises().observe(this, exerciseCollection ->{
-            exercises.addAll(viewModel.getExercises().getValue());
+            exercises.addAll(exerciseCollection);
             adapter.notifyDataSetChanged();
         });
     }
@@ -87,5 +81,15 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         super.onResume();
 
         exercises.clear();
+        viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
+            for(Exercise exercise : exercisesDAO)
+            {
+                if(category == 0)
+                    exercises.add(exercise);
+                else if(exercise.getCategory() == category)
+                    exercises.add(exercise);
+            }
+            adapter.notifyDataSetChanged();
+        });
     }
 }

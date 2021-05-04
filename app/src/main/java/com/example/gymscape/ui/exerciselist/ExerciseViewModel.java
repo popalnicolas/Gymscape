@@ -52,20 +52,6 @@ public class ExerciseViewModel extends AndroidViewModel {
         return exerciseRepository.getAllExercisesDao();
     }
 
-    List<Exercise> getExerciseByCategoryDAO(int category)
-    {
-        if(category == 0)
-            return exerciseRepository.getAllExercisesDao().getValue();
-
-        ArrayList<Exercise> catExercises = new ArrayList<>();
-        for(Exercise exercise : exerciseRepository.getAllExercisesDao().getValue())
-        {
-            if(exercise.getCategory() == category)
-                catExercises.add(exercise);
-        }
-        return new ArrayList<Exercise>(catExercises);
-    }
-
     public void insert(final Exercise exercise)
     {
         exerciseRepository.insert(exercise);
