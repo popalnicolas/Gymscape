@@ -22,6 +22,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
     ExerciseViewModel viewModel;
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
+    ArrayList<Exercise> exercises;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +43,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
 
         viewModel.setExercise();
 
-        ArrayList<Exercise> exercises = new ArrayList<>();
+        exercises = new ArrayList<>();
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
 
@@ -63,5 +64,13 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         toSpecificExercise.putExtra(UsedEnums.EXERCISE.toString(), clickedItemIndex);
         toSpecificExercise.putExtra(UsedEnums.POSITION.toString(), position);
         startActivity(toSpecificExercise);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        
+        exercises.clear();
     }
 }
