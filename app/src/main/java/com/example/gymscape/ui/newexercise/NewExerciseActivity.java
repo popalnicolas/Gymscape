@@ -8,7 +8,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,7 +23,12 @@ import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exerciselist.ExerciseActivity;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class NewExerciseActivity extends AppCompatActivity {
 
@@ -33,11 +40,13 @@ public class NewExerciseActivity extends AppCompatActivity {
     Button cancelExercise;
     ImageView previewImage;
 
-    Bitmap bitmap;
+    Bitmap photo;
 
     final int CAMERA_REQUEST = 1;
 
     int category;
+
+    File mediaFile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +72,7 @@ public class NewExerciseActivity extends AppCompatActivity {
         });
 
         selectPhoto.setOnClickListener(v -> {
+            //@TODO: full resolution picture
             Intent cameraIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
             startActivityForResult(cameraIntent, CAMERA_REQUEST);
         });
@@ -74,8 +84,11 @@ public class NewExerciseActivity extends AppCompatActivity {
             Toast.makeText(this, "Exercise name is too long.", Toast.LENGTH_SHORT).show();
         else if(nameField.getText().toString().isEmpty() || descriptionField.getText().toString().isEmpty())
             Toast.makeText(this, "Description or/and exercise name are empty.", Toast.LENGTH_SHORT).show();
+        else if(mediaFile == null)
+            Toast.makeText(this, "You must take a picture of exercise.", Toast.LENGTH_SHORT).show();
         else {
-            viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), bitmap.toString()));
+            storeImage(photo);
+            viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), mediaFile.getAbsolutePath()));
             Intent intent = new Intent(this, ExerciseActivity.class);
             intent.putExtra(UsedEnums.CATEGORY.toString(), category);
             startActivity(intent);
@@ -89,8 +102,44 @@ public class NewExerciseActivity extends AppCompatActivity {
 
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
         {
-            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            photo = (Bitmap) data.getExtras().get("data");
             previewImage.setImageBitmap(photo);
         }
+    }
+
+    private void storeImage(Bitmap image) {
+        File pictureFile = getOutputMediaFile();
+        if (pictureFile == null) {
+            Log.d("Image Save", "Error creating media file, check storage permissions: ");
+            return;
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(pictureFile);
+            image.compress(Bitmap.CompressFormat.PNG, 90, fos);
+            fos.close();
+        } catch (FileNotFoundException e) {
+            Log.d("Image Save", "File not found: " + e.getMessage());
+        } catch (IOException e) {
+            Log.d("Image Save", "Error accessing file: " + e.getMessage());
+        }
+    }
+
+    private File getOutputMediaFile(){
+        File mediaStorageDir = new File(Environment.getExternalStorageDirectory()
+                + "/Android/data/"
+                + getApplicationContext().getPackageName()
+                + "/Files");
+        // Create the storage directory if it does not exist
+        if (! mediaStorageDir.exists()){
+            if (! mediaStorageDir.mkdirs()){
+                return null;
+            }
+        }
+        // Create a media file name (EXERCISE_ddMMyyy_HHmmss.jpg)
+        String timeStamp = new SimpleDateFormat("ddMMyyyy_HHmmss").format(new Date());
+
+        String mImageName="EXERCISE_"+ timeStamp +".jpg";
+        mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
+        return mediaFile;
     }
 }

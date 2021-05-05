@@ -50,14 +50,4 @@ public class SpecificExerciseActivity extends AppCompatActivity {
         exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
         exerciseName.setText(exercise.getName().toUpperCase());
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        Intent intent = new Intent(this, ExerciseActivity.class);
-        setResult(RESULT_OK, intent);
-
-        finish();
-    }
 }
