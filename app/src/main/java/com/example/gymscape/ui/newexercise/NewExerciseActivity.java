@@ -57,7 +57,7 @@ public class NewExerciseActivity extends AppCompatActivity {
 
         cancelExercise.setOnClickListener(v -> {
             Intent backIntent = new Intent(this, ExerciseActivity.class);
-            intent.putExtra(UsedEnums.CATEGORY.toString(), category);
+            backIntent.putExtra(UsedEnums.CATEGORY.toString(), category);
             startActivity(backIntent);
             finish();
         });
@@ -73,7 +73,7 @@ public class NewExerciseActivity extends AppCompatActivity {
         if(nameField.getText().toString().length() > 20)
             Toast.makeText(this, "Exercise name is too long.", Toast.LENGTH_SHORT).show();
         else if(nameField.getText().toString().isEmpty() || descriptionField.getText().toString().isEmpty())
-            Toast.makeText(this, "Description or exercise name are empty.", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Description or/and exercise name are empty.", Toast.LENGTH_SHORT).show();
         else {
             viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), bitmap.toString()));
             Intent intent = new Intent(this, ExerciseActivity.class);
