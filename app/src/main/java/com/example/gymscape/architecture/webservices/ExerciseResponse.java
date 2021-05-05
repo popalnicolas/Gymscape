@@ -11,6 +11,6 @@ public class ExerciseResponse {
 
     public Exercise getExercise()
     {
-        return new Exercise(id, name, cat, description, picture, "webservice");
+        return new Exercise(id, name, cat, description, picture);
     }
 }

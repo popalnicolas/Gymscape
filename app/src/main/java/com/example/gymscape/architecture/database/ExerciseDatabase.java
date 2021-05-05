@@ -8,7 +8,7 @@ import androidx.room.RoomDatabase;
 
 import com.example.gymscape.Model.Exercise;
 
-@Database(entities = {Exercise.class}, version = 2)
+@Database(entities = {Exercise.class}, version = 5)
 public abstract class ExerciseDatabase extends RoomDatabase {
 
     private static ExerciseDatabase instance;

@@ -14,24 +14,21 @@ public class Exercise implements Serializable {
     private int category;
     private String description;
     private String picture;
-    private String position;
 
     @Ignore
-    public Exercise(int id, String name, int category, String description, String picture, String position) {
+    public Exercise(int id, String name, int category, String description, String picture) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.description = description;
         this.picture = picture;
-        this.position = position;
     }
 
-    public Exercise(String name, int category, String description, String picture, String position) {
+    public Exercise(String name, int category, String description, String picture) {
         this.name = name;
         this.category = category;
         this.description = description;
         this.picture = picture;
-        this.position = position;
     }
 
     public int getId() {
@@ -54,8 +51,6 @@ public class Exercise implements Serializable {
         return picture;
     }
 
-    public String getPosition() { return position; }
-
     public void setId(int id) {
         this.id = id;
     }
@@ -74,10 +69,5 @@ public class Exercise implements Serializable {
 
     public void setPicture(String picture) {
         this.picture = picture;
-    }
-
-    public void setPosition(String position)
-    {
-        this.position = position;
     }
 }

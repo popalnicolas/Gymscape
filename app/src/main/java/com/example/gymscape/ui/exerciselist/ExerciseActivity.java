@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
@@ -23,55 +24,67 @@ import com.example.gymscape.ui.newexercise.NewExerciseActivity;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapter.OnListItemClickListener{
 
     ExerciseViewModel viewModel;
     RecyclerView recyclerView;
     ExerciseAdapter adapter;
-    ArrayList<Exercise> exercises = new ArrayList<>();
     FloatingActionButton fab;
     int category;
+    ArrayList<Exercise> exercises = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_exercise);
-
-        this.getSupportActionBar().setTitle(getResources().getString(R.string.title_workout));
-        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
-
+        ArrayList<String> categoryNames = new ArrayList<>(Arrays.asList("All", "Core", "Chest", "Back", "Biceps", "Triceps", "Shoulders", "Legs", "Glutes"));
         Intent intent = getIntent();
         category = intent.getIntExtra(UsedEnums.CATEGORY.toString(), 0);
+
+        this.getSupportActionBar().setTitle( categoryNames.get(category) + " " + getResources().getString(R.string.title_exercises));
+        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(ExerciseViewModel.class);
 
         fab = findViewById(R.id.addNewExerciseButton);
+        if(category == 0)
+            fab.setVisibility(View.GONE);
         fab.setOnClickListener(v -> {
             Intent newProfileIntent = new Intent(this, NewExerciseActivity.class);
+            newProfileIntent.putExtra(UsedEnums.CATEGORY.toString(), category);
             startActivity(newProfileIntent);
+            finish();
         });
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.hasFixedSize();
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        viewModel.setExercise(category);
+        viewModel.setExercise();
 
         adapter = new ExerciseAdapter(exercises, this);
         recyclerView.setAdapter(adapter);
 
+        exercises.clear();
+
         viewModel.getExercises().observe(this, exerciseCollection ->{
-            exercises.addAll(exerciseCollection);
+            for(Exercise exercise : exerciseCollection)
+            {
+                if(category == 0)
+                    exercises.add(exercise);
+                else if(exercise.getCategory() == category)
+                    exercises.add(exercise);
+            }
             adapter.notifyDataSetChanged();
         });
     }
 
     @Override
-    public void onListItemClick(int clickedItemIndex, String position) {
+    public void onListItemClick(int clickedItemIndex) {
         Intent toSpecificExercise = new Intent(this, SpecificExerciseActivity.class);
         toSpecificExercise.putExtra(UsedEnums.EXERCISE.toString(), adapter.exercisesList.get(clickedItemIndex));
-        toSpecificExercise.putExtra(UsedEnums.POSITION.toString(), position);
         startActivity(toSpecificExercise);
         finish();
     }
@@ -81,6 +94,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
         super.onResume();
 
         exercises.clear();
+
         viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
             for(Exercise exercise : exercisesDAO)
             {

@@ -33,33 +33,22 @@ public class SpecificExerciseActivity extends AppCompatActivity {
 
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(SpecificExerciseViewModel.class);
 
-        this.getSupportActionBar().setTitle(getResources().getString(R.string.title_exercises));
-        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
-
         Intent intent = getIntent();
         exercise = (Exercise) intent.getSerializableExtra(UsedEnums.EXERCISE.toString());
-        String position = intent.getStringExtra(UsedEnums.POSITION.toString());
+
+        this.getSupportActionBar().setTitle(exercise.getName());
+        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
         exerciseImage = findViewById(R.id.exerciseImage);
         exerciseDescription = findViewById(R.id.exerciseDescription);
         exerciseName = findViewById(R.id.exerciseName);
 
-        if(position.equals("webservice")) {
-            viewModel.setExercise();
-            viewModel.getExercises().observe(this, exercises -> {
-                Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
-                exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
-                exerciseName.setText(exercise.getName().toUpperCase());
-            });
-        }
+        if(exercise.getPicture().isEmpty())
+            exerciseImage.setImageResource(R.drawable.exercise_universal_picture);
         else
-        {
-            viewModel.getExercisesDAO().observe(this, exercises -> {
-                Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
-                exerciseDescription.setText(exercise.getDescription());
-                exerciseName.setText(exercise.getName().toUpperCase());
-            });
-        }
+            Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
+        exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
+        exerciseName.setText(exercise.getName().toUpperCase());
     }
 
     @Override

@@ -3,6 +3,8 @@
     package="com.example.gymscape">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,16 +14,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymscape"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.newexercise.NewExerciseActivity" />
+        <activity android:name=".ui.newexercise.NewExerciseActivity"
+            android:screenOrientation="portrait"/>
         <activity
-            android:name=".ui.exercise.SpecificExerciseActivity" />
+            android:name=".ui.exercise.SpecificExerciseActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.exerciselist.ExerciseActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/title_activity_main"
-            android:screenOrientation="portrait">
+            android:label="@string/title_activity_main">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

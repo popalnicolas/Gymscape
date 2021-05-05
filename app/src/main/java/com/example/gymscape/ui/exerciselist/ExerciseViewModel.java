@@ -27,23 +27,9 @@ public class ExerciseViewModel extends AndroidViewModel {
         return exerciseRepository.getExercisesData();
     }
 
-    List<Exercise> getExerciseByCategory(int category)
+    public void setExercise()
     {
-        if(category == 0)
-            return exerciseRepository.getExercisesData().getValue();
-
-        ArrayList<Exercise> catExercises = new ArrayList<>();
-        for(Exercise exercise : exerciseRepository.getExercisesData().getValue())
-        {
-            if(exercise.getCategory() == category)
-                catExercises.add(exercise);
-        }
-        return new ArrayList<Exercise>(catExercises);
-    }
-
-    public void setExercise(int category)
-    {
-        exerciseRepository.setAllExercisesData(category);
+        exerciseRepository.setAllExercisesData();
     }
 
     /** DATABASE **/

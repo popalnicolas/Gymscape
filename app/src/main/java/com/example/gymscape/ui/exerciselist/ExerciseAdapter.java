@@ -82,11 +82,11 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ViewHo
 
         @Override
         public void onClick(View v) {
-            mOnListItemClickListener.onListItemClick(getAdapterPosition(), exercisesList.get(getAdapterPosition()).getPosition());
+            mOnListItemClickListener.onListItemClick(getAdapterPosition());
         }
     }
 
     public interface OnListItemClickListener {
-        void onListItemClick(int clickedItemIndex, String position);
+        void onListItemClick(int clickedItemIndex);
     }
 }
