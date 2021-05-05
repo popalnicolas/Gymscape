@@ -40,13 +40,12 @@ public class NewExerciseActivity extends AppCompatActivity {
     Button cancelExercise;
     ImageView previewImage;
 
-    Bitmap photo;
-
-    final int CAMERA_REQUEST = 1;
-
     int category;
 
     File mediaFile;
+    Bitmap photo;
+    final int CAMERA_REQUEST = 1;
+    boolean pictureTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,9 +101,12 @@ public class NewExerciseActivity extends AppCompatActivity {
 
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
         {
+            pictureTaken = true;
             photo = (Bitmap) data.getExtras().get("data");
             previewImage.setImageBitmap(photo);
         }
+        else
+            pictureTaken = false;
     }
 
     private void storeImage(Bitmap image) {

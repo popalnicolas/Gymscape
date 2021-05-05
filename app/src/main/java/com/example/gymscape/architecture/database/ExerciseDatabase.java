@@ -7,13 +7,15 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 
 import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.Model.Workout;
 
-@Database(entities = {Exercise.class}, version = 5)
+@Database(entities = {Exercise.class, Workout.class}, version = 6)
 public abstract class ExerciseDatabase extends RoomDatabase {
 
     private static ExerciseDatabase instance;
 
     public abstract ExerciseDAO exerciseDAO();
+    public abstract WorkoutDAO workoutDAO();
 
     public static synchronized ExerciseDatabase getInstance(Context context)
     {
