@@ -5,16 +5,16 @@ Gymscape is an android app, which will track your progress in gym. It is based o
 
 ## MoSCoW requirements
 ### Must Have
-- Calendar with working days
-- List of exercises
-- Weight used and time trained each excerise
-- Option to save the progress
-- Option to change weight
+- Calendar with working days :heavy_check_mark:
+- List of exercises :heavy_check_mark:
+- Weight used and time trained each excerise :heavy_check_mark:
+- Option to save the progress :heavy_check_mark:
+- Option to change progress
 
 ### Should have
-- Option to add, delete or edit exercise
-- Which parts of body is used in specific excerise
-- Picture how to train specific excerise correctly
+- Option to add, delete or edit exercise :heavy_check_mark:
+- Which parts of body is used in specific excerise :heavy_check_mark:
+- Picture how to train specific excerise correctly :heavy_check_mark:
 - Login option
 
 ### Could have
