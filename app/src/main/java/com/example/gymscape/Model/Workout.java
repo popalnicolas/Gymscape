@@ -27,6 +27,12 @@ public class Workout implements Serializable {
         this.weight = weight;
     }
 
+    @Ignore
+    public Workout()
+    {
+
+    }
+
     public Workout(String exerciseName, int category, long date, int sets, int weight) {
         this.exerciseName = exerciseName;
         this.category = category;
@@ -81,5 +87,16 @@ public class Workout implements Serializable {
 
     public void setWeight(int weight) {
         this.weight = weight;
+    }
+
+    @Override
+    public String toString() {
+        return "Workout{" +
+                ", exerciseName='" + exerciseName + '\'' +
+                ", category=" + category +
+                ", date=" + date +
+                ", sets=" + sets +
+                ", weight=" + weight +
+                '}';
     }
 }

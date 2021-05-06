@@ -7,22 +7,25 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.Model.Workout;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
 import java.util.Date;
 
 public class NewWorkoutViewModel extends AndroidViewModel {
     MutableLiveData<Date> date;
     MutableLiveData<Integer> sets;
-    MutableLiveData<Integer> weight;
     MutableLiveData<Exercise> exercise;
+    ExerciseRepository repository;
 
     public NewWorkoutViewModel(Application application)
     {
         super(application);
         date = new MutableLiveData<>();
         sets = new MutableLiveData<>();
-        weight = new MutableLiveData<>();
+        sets.setValue(1);
         exercise = new MutableLiveData<>();
+        repository = ExerciseRepository.getInstance(application);
     }
 
     public LiveData<Date> getDate() {
@@ -41,19 +44,16 @@ public class NewWorkoutViewModel extends AndroidViewModel {
         this.sets.setValue(sets);
     }
 
-    public LiveData<Integer> getWeight() {
-        return weight;
-    }
-
-    public void setWeight(int weight) {
-        this.weight.setValue(weight);
-    }
-
     public LiveData<Exercise> getExercise() {
         return exercise;
     }
 
     public void setExercise(Exercise exercise) {
         this.exercise.setValue(exercise);
+    }
+
+    public void insert(final Workout workout)
+    {
+        repository.insertWorkout(workout);
     }
 }

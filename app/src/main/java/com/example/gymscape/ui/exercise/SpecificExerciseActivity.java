@@ -77,6 +77,7 @@ public class SpecificExerciseActivity extends AppCompatActivity {
             Intent intent = new Intent(this, NewWorkoutActivity.class);
             intent.putExtra(UsedEnums.EXERCISE.toString(), exercise);
             startActivity(intent);
+            finish();
             return true;
         }
         else if(item.getItemId() == R.id.deleteExerciseMenu)

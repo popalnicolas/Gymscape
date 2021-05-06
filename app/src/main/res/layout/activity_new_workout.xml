@@ -67,7 +67,7 @@
         app:layout_constraintTop_toBottomOf="@+id/setsTextView" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/saveWorkoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="save"
@@ -76,7 +76,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/cancelWorkoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cancel"
@@ -103,7 +103,7 @@
         app:layout_constraintTop_toTopOf="@+id/dateTextView" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/increaseSetsButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:text="+"
@@ -113,7 +113,7 @@
         app:layout_constraintTop_toTopOf="@+id/setsTextView" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/setsCountTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
@@ -121,12 +121,12 @@
         android:textColor="@color/whiteBlue"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/setsTextView"
-        app:layout_constraintEnd_toStartOf="@+id/button4"
-        app:layout_constraintStart_toEndOf="@+id/button5"
+        app:layout_constraintEnd_toStartOf="@+id/increaseSetsButton"
+        app:layout_constraintStart_toEndOf="@+id/decreaseSetsButton"
         app:layout_constraintTop_toTopOf="@+id/setsTextView" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/decreaseSetsButton"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:text="-"
@@ -135,7 +135,7 @@
         app:layout_constraintTop_toTopOf="@+id/setsTextView" />
 
     <EditText
-        android:id="@+id/editTextNumber"
+        android:id="@+id/weightTextNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/input_round"

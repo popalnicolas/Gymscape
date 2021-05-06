@@ -6,8 +6,10 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.Model.Workout;
 import com.example.gymscape.architecture.database.ExerciseDAO;
 import com.example.gymscape.architecture.database.ExerciseDatabase;
+import com.example.gymscape.architecture.database.WorkoutDAO;
 import com.example.gymscape.architecture.webservices.ExerciseApi;
 import com.example.gymscape.architecture.webservices.ExerciseResponse;
 import com.example.gymscape.architecture.webservices.ServiceGenerator;
@@ -34,6 +36,8 @@ public class ExerciseRepository {
     private final LiveData<List<Exercise>> allExercisesDao;
     private final ExecutorService executorService;
 
+    private final WorkoutDAO workoutDAO;
+
     private ExerciseRepository(Application app)
     {
         /** WEBSERVICES **/
@@ -44,6 +48,8 @@ public class ExerciseRepository {
         exerciseDAO = database.exerciseDAO();
         allExercisesDao = exerciseDAO.getAllExercises();
         executorService = Executors.newFixedThreadPool(2);
+
+        workoutDAO = database.workoutDAO();
     }
 
     /** SHARED **/
@@ -104,5 +110,10 @@ public class ExerciseRepository {
     public void delete (Exercise exercise)
     {
         executorService.execute(() -> exerciseDAO.delete(exercise));
+    }
+
+    public void insertWorkout (Workout workout)
+    {
+        executorService.execute(() -> workoutDAO.insert(workout));
     }
 }
