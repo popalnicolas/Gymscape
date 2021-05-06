@@ -9,7 +9,7 @@ import androidx.room.RoomDatabase;
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.Model.Workout;
 
-@Database(entities = {Exercise.class, Workout.class}, version = 6)
+@Database(entities = {Exercise.class, Workout.class}, version = 7)
 public abstract class ExerciseDatabase extends RoomDatabase {
 
     private static ExerciseDatabase instance;

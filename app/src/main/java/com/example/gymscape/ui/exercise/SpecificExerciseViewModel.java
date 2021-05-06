@@ -1,9 +1,12 @@
 package com.example.gymscape.ui.exercise;
 
 import android.app.Application;
+import android.view.View;
 
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.ViewModel;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.architecture.shared.ExerciseRepository;
@@ -13,48 +16,26 @@ import java.util.List;
 
 public class SpecificExerciseViewModel extends AndroidViewModel {
 
-    ExerciseRepository exerciseRepository;
+    MutableLiveData<Exercise> exerciseMD;
+    ExerciseRepository repository;
 
     public SpecificExerciseViewModel(Application app)
     {
         super(app);
-        exerciseRepository = ExerciseRepository.getInstance(app);
+        exerciseMD = new MutableLiveData<>();
+        repository = ExerciseRepository.getInstance(app);
     }
 
-    LiveData<List<Exercise>> getExercises()
-    {
-        return exerciseRepository.getExercisesData();
+    public LiveData<Exercise> getExerciseMD() {
+        return exerciseMD;
     }
 
-    Exercise getExerciseById(int exerciseId)
-    {
-        for(Exercise exercise : exerciseRepository.getExercisesData().getValue())
-        {
-            if(exercise.getId() == exerciseId)
-                return exercise;
-        }
-        return null;
+    public void setExerciseMD(Exercise exercise) {
+        this.exerciseMD.setValue(exercise);
     }
 
-    public void setExercise()
+    public void delete(final Exercise exercise)
     {
-        exerciseRepository.setAllExercisesData();
-    }
-
-    /** DATABASE **/
-
-    LiveData<List<Exercise>> getExercisesDAO()
-    {
-        return exerciseRepository.getAllExercisesDao();
-    }
-
-    Exercise getExerciseDAOById(int exerciseId)
-    {
-        for(Exercise exercise : exerciseRepository.getAllExercisesDao().getValue())
-        {
-            if(exercise.getId() == exerciseId)
-                return exercise;
-        }
-        return null;
+        repository.delete(exercise);
     }
 }

@@ -83,11 +83,11 @@ public class NewExerciseActivity extends AppCompatActivity {
             Toast.makeText(this, "Exercise name is too long.", Toast.LENGTH_SHORT).show();
         else if(nameField.getText().toString().isEmpty() || descriptionField.getText().toString().isEmpty())
             Toast.makeText(this, "Description or/and exercise name are empty.", Toast.LENGTH_SHORT).show();
-        else if(mediaFile == null)
+        else if(!pictureTaken)
             Toast.makeText(this, "You must take a picture of exercise.", Toast.LENGTH_SHORT).show();
         else {
             storeImage(photo);
-            viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), mediaFile.getAbsolutePath()));
+            viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), mediaFile.getAbsolutePath(), true));
             Intent intent = new Intent(this, ExerciseActivity.class);
             intent.putExtra(UsedEnums.CATEGORY.toString(), category);
             startActivity(intent);

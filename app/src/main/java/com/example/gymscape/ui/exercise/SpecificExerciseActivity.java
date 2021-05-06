@@ -1,5 +1,6 @@
 package com.example.gymscape.ui.exercise;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
@@ -7,6 +8,10 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,6 +21,8 @@ import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exerciselist.ExerciseActivity;
+import com.example.gymscape.ui.exerciselist.ExerciseViewModel;
+import com.example.gymscape.ui.newexercise.NewExerciseViewModel;
 
 public class SpecificExerciseActivity extends AppCompatActivity {
 
@@ -36,6 +43,8 @@ public class SpecificExerciseActivity extends AppCompatActivity {
         Intent intent = getIntent();
         exercise = (Exercise) intent.getSerializableExtra(UsedEnums.EXERCISE.toString());
 
+        viewModel.setExerciseMD(exercise);
+
         this.getSupportActionBar().setTitle(exercise.getName());
         this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
@@ -43,11 +52,47 @@ public class SpecificExerciseActivity extends AppCompatActivity {
         exerciseDescription = findViewById(R.id.exerciseDescription);
         exerciseName = findViewById(R.id.exerciseName);
 
-        if(exercise.getPicture().isEmpty())
-            exerciseImage.setImageResource(R.drawable.exercise_universal_picture);
-        else
-            Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
-        exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
-        exerciseName.setText(exercise.getName().toUpperCase());
+        viewModel.getExerciseMD().observe(this, exerciseData -> {
+            if(exercise.getPicture().isEmpty())
+                exerciseImage.setImageResource(R.drawable.exercise_universal_picture);
+            else
+                Glide.with(this).load(exercise.getPicture()).into(exerciseImage);
+            exerciseDescription.setText(exercise.getDescription() + "\n\n\n\n\n\n\n\n");
+            exerciseName.setText(exercise.getName().toUpperCase());
+        });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.top_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.addToWorkoutMenu)
+        {
+            //do something
+            return true;
+        }
+        else if(item.getItemId() == R.id.deleteExerciseMenu)
+        {
+            if(exercise.isDatabase())
+            {
+                Intent intent = new Intent(this, ExerciseActivity.class);
+                intent.putExtra(UsedEnums.CATEGORY.toString(), exercise.getCategory());
+                viewModel.delete(exercise);
+                startActivity(intent);
+                finish();
+                return true;
+            }
+            else
+            {
+                Toast.makeText(this, "You cannot delete this exercise.", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        }
+            return super.onOptionsItemSelected(item);
     }
 }

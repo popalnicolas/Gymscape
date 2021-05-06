@@ -14,21 +14,24 @@ public class Exercise implements Serializable {
     private int category;
     private String description;
     private String picture;
+    private boolean isDatabase;
 
     @Ignore
-    public Exercise(int id, String name, int category, String description, String picture) {
+    public Exercise(int id, String name, int category, String description, String picture, boolean isDatabase) {
         this.id = id;
         this.name = name;
         this.category = category;
         this.description = description;
         this.picture = picture;
+        this.isDatabase = isDatabase;
     }
 
-    public Exercise(String name, int category, String description, String picture) {
+    public Exercise(String name, int category, String description, String picture, boolean isDatabase) {
         this.name = name;
         this.category = category;
         this.description = description;
         this.picture = picture;
+        this.isDatabase = isDatabase;
     }
 
     public int getId() {
@@ -69,5 +72,13 @@ public class Exercise implements Serializable {
 
     public void setPicture(String picture) {
         this.picture = picture;
+    }
+
+    public boolean isDatabase() {
+        return isDatabase;
+    }
+
+    public void setIsDatabase(boolean isDatabase) {
+        this.isDatabase = isDatabase;
     }
 }

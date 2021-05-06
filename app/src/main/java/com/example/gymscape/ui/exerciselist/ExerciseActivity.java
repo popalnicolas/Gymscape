@@ -95,6 +95,7 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
 
         exercises.clear();
 
+        //@TODO: do not display delete exercises
         viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
             for(Exercise exercise : exercisesDAO)
             {
