@@ -8,7 +8,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,8 +20,6 @@ import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exerciselist.ExerciseActivity;
-import com.example.gymscape.ui.exerciselist.ExerciseViewModel;
-import com.example.gymscape.ui.newexercise.NewExerciseViewModel;
 import com.example.gymscape.ui.newworkout.NewWorkoutActivity;
 
 public class SpecificExerciseActivity extends AppCompatActivity {
@@ -66,7 +63,7 @@ public class SpecificExerciseActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.top_menu, menu);
+        inflater.inflate(R.menu.top_menu_exercise, menu);
         return true;
     }
 

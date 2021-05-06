@@ -13,12 +13,12 @@ public class Workout implements Serializable {
     private int id;
     private String exerciseName;
     private int category;
-    private long date;
+    private int date;
     private int sets;
     private int weight;
 
     @Ignore
-    public Workout(int id, String exerciseName, int category, long date, int sets, int weight) {
+    public Workout(int id, String exerciseName, int category, int date, int sets, int weight) {
         this.id = id;
         this.exerciseName = exerciseName;
         this.category = category;
@@ -33,7 +33,7 @@ public class Workout implements Serializable {
 
     }
 
-    public Workout(String exerciseName, int category, long date, int sets, int weight) {
+    public Workout(String exerciseName, int category, int date, int sets, int weight) {
         this.exerciseName = exerciseName;
         this.category = category;
         this.date = date;
@@ -65,11 +65,11 @@ public class Workout implements Serializable {
         this.category = category;
     }
 
-    public long getDate() {
+    public int getDate() {
         return date;
     }
 
-    public void setDate(long date) {
+    public void setDate(int date) {
         this.date = date;
     }
 

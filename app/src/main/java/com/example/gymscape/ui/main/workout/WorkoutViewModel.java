@@ -1,19 +1,39 @@
 package com.example.gymscape.ui.main.workout;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class WorkoutViewModel extends ViewModel {
+import com.example.gymscape.Model.Workout;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
-    private MutableLiveData<String> mText;
+import java.util.List;
 
-    public WorkoutViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is workout fragment");
+public class WorkoutViewModel extends AndroidViewModel {
+
+    private ExerciseRepository repository;
+    MutableLiveData<Boolean> isWorkout;
+
+    public WorkoutViewModel(Application app) {
+        super(app);
+        repository = ExerciseRepository.getInstance(app);
+        isWorkout = new MutableLiveData<>();
+        isWorkout.setValue(false);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void setIsWorkout(boolean isWorkout) {
+        this.isWorkout.setValue(isWorkout);
+    }
+
+    public LiveData<Boolean> isWorkout() {
+        return isWorkout;
+    }
+
+    public LiveData<List<Workout>> getAllWorkouts()
+    {
+        return repository.getAllWorkouts();
     }
 }

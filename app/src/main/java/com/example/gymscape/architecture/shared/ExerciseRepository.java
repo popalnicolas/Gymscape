@@ -37,6 +37,8 @@ public class ExerciseRepository {
     private final ExecutorService executorService;
 
     private final WorkoutDAO workoutDAO;
+    private final MutableLiveData<List<Workout>> workoutByDate;
+    private final LiveData<List<Workout>> allWorkouts;
 
     private ExerciseRepository(Application app)
     {
@@ -50,6 +52,8 @@ public class ExerciseRepository {
         executorService = Executors.newFixedThreadPool(2);
 
         workoutDAO = database.workoutDAO();
+        workoutByDate = new MutableLiveData<>();
+        allWorkouts = workoutDAO.getAllWorkouts();
     }
 
     /** SHARED **/
@@ -115,5 +119,17 @@ public class ExerciseRepository {
     public void insertWorkout (Workout workout)
     {
         executorService.execute(() -> workoutDAO.insert(workout));
+    }
+
+    public LiveData<List<Workout>> getWorkoutByDate(int date)
+    {
+        executorService.execute(() -> workoutDAO.getWorkoutByDate(date));
+        workoutByDate.setValue(workoutDAO.getWorkoutByDate(date).getValue());
+        return workoutByDate;
+    }
+
+    public LiveData<List<Workout>> getAllWorkouts()
+    {
+        return allWorkouts;
     }
 }

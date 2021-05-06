@@ -22,6 +22,10 @@ public interface WorkoutDAO {
     @Update
     void update(Workout workout);
 
+    // I dont know how to define it in the repository :'( (but I tried)
     @Query("SELECT * FROM workout_table WHERE date= :date")
-    LiveData<List<Workout>> getWorkoutByDate(long date);
+    LiveData<List<Workout>> getWorkoutByDate(int date);
+
+    @Query("SELECT * FROM workout_table")
+    LiveData<List<Workout>> getAllWorkouts();
 }

@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.Model.Workout;
 import com.example.gymscape.R;
+import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
 import com.example.gymscape.ui.exercise.SpecificExerciseViewModel;
@@ -29,6 +30,7 @@ import com.example.gymscape.ui.exerciselist.ExerciseActivity;
 import com.example.gymscape.ui.main.calendar.CalendarViewModel;
 import com.example.gymscape.ui.newexercise.NewExerciseViewModel;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Locale;
@@ -96,7 +98,7 @@ public class NewWorkoutActivity extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 calendar.set(Calendar.YEAR, year);
-                calendar.set(Calendar.MONDAY, dayOfMonth);
+                calendar.set(Calendar.MONTH, month);
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
                 viewModel.setDate(calendar.getTime());
             }
@@ -111,12 +113,12 @@ public class NewWorkoutActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
             datePicker.setText(dateFormat.format(chosenDate));
 
-            newWorkout.setDate(chosenDate.getTime());
+            newWorkout.setDate(getDate(chosenDate.getTime()));
         });
 
         decreaseSets.setOnClickListener(v -> {
-            if(viewModel.getSets().getValue() <= 1)
-                Toast.makeText(this, "Minimum value of sets is 1", Toast.LENGTH_SHORT).show();
+            if(viewModel.getSets().getValue() <= 0)
+                Toast.makeText(this, "Minimum value of sets is 0", Toast.LENGTH_SHORT).show();
             else
             {
                 int setsValue = Integer.parseInt(setsCountTextView.getText().toString());
@@ -144,8 +146,21 @@ public class NewWorkoutActivity extends AppCompatActivity {
         });
 
         saveWorkoutButton.setOnClickListener(v -> {
-            newWorkout.setWeight(Integer.parseInt(weightTextNumber.getText().toString()));
-            viewModel.insert(newWorkout);
+            if(newWorkout.getDate() <= 0)
+                Toast.makeText(this, "You must set date to continue.", Toast.LENGTH_SHORT).show();
+            else {
+                if (weightTextNumber.getText().toString().equals(""))
+                    newWorkout.setWeight(0);
+                else
+                    newWorkout.setWeight(Integer.parseInt(weightTextNumber.getText().toString()));
+
+                viewModel.insert(newWorkout);
+                Log.i("Date", newWorkout.getDate() + "");
+
+                Intent mainIntent = new Intent(this, MainActivity.class);
+                startActivity(mainIntent);
+                finish();
+            }
         });
 
         cancelWorkoutButton.setOnClickListener(v -> {
@@ -178,5 +193,14 @@ public class NewWorkoutActivity extends AppCompatActivity {
                 return R.drawable.icon_glutes;
         }
         return 0;
+    }
+
+    private int getDate(long date)
+    {
+        Date date1 = new Date(date);
+        String myFormat = "ddMMyyyy";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
+        String desiredFormat = dateFormat.format(date1);
+        return Integer.parseInt(desiredFormat);
     }
 }

@@ -1,0 +1,96 @@
+package com.example.gymscape.ui.main.workout;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.gymscape.Model.Exercise;
+import com.example.gymscape.Model.Workout;
+import com.example.gymscape.R;
+
+import java.util.ArrayList;
+
+public class WorkoutAdapter extends RecyclerView.Adapter<WorkoutAdapter.ViewHolder> {
+
+    public ArrayList<Workout> workoutList;
+    final private OnListItemClickListener mOnListItemClickListener;
+
+    public WorkoutAdapter(ArrayList<Workout> workouts, OnListItemClickListener listener) {
+        workoutList = workouts;
+        mOnListItemClickListener = listener;
+    }
+
+    @NonNull
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View view = inflater.inflate(R.layout.workout_list_item, parent, false);
+        return new ViewHolder(view);
+    }
+
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
+        viewHolder.name.setText(workoutList.get(position).getExerciseName());
+        switch (workoutList.get(position).getCategory()) {
+            case 1:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_core);
+                break;
+            case 2:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_chest);
+                break;
+            case 3:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_back);
+                break;
+            case 4:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_biceps);
+                break;
+            case 5:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_triceps);
+                break;
+            case 6:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_shoulder);
+                break;
+            case 7:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_legs);
+                break;
+            case 8:
+                viewHolder.iconMuscle.setImageResource(R.drawable.icon_glutes);
+                break;
+        }
+        if(workoutList.get(position).getSets() == 0 || workoutList.get(position).getWeight() == 0)
+            viewHolder.information.setText("");
+        else
+            viewHolder.information.setText(workoutList.get(position).getSets() + " sets | weight: " + workoutList.get(position).getWeight() + " kgs");
+    }
+
+    public int getItemCount() {
+        return workoutList.size();
+    }
+
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
+        TextView name;
+        ImageView iconMuscle;
+        TextView information;
+
+        ViewHolder(View itemView) {
+            super(itemView);
+            name = itemView.findViewById(R.id.exerciseName);
+            iconMuscle = itemView.findViewById(R.id.iconMuscle);
+            information = itemView.findViewById(R.id.informationTextView);
+            itemView.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View v) {
+            mOnListItemClickListener.onListItemClick(getAdapterPosition());
+        }
+    }
+
+    public interface OnListItemClickListener {
+        void onListItemClick(int clickedItemIndex);
+    }
+}

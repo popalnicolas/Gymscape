@@ -1,19 +1,31 @@
 package com.example.gymscape.ui.main.calendar;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class CalendarViewModel extends ViewModel {
+import com.example.gymscape.Model.Workout;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
-    private MutableLiveData<String> mText;
+import java.util.ArrayList;
+import java.util.List;
 
-    public CalendarViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("This is calendar fragment");
+public class CalendarViewModel extends AndroidViewModel {
+
+    private ExerciseRepository repository;
+
+    public CalendarViewModel(Application app) {
+        super(app);
+        repository = ExerciseRepository.getInstance(app);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+
+
+    public List<Workout> getAllWorkoutsList()
+    {
+        return repository.getAllWorkouts().getValue();
     }
 }
