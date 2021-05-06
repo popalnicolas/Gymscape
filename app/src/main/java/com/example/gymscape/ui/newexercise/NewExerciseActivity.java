@@ -2,11 +2,13 @@ package com.example.gymscape.ui.newexercise;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -21,6 +23,7 @@ import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
 import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
+import com.example.gymscape.ui.exercise.SpecificExerciseViewModel;
 import com.example.gymscape.ui.exerciselist.ExerciseActivity;
 
 import java.io.File;
@@ -52,7 +55,10 @@ public class NewExerciseActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_exercise);
 
-        viewModel = new ViewModelProvider(this).get(NewExerciseViewModel.class);
+        viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getApplication())).get(NewExerciseViewModel.class);
+
+        this.getSupportActionBar().setTitle("Add Exercise");
+        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
 
         Intent intent = getIntent();
         category = intent.getIntExtra(UsedEnums.CATEGORY.toString(), 0);

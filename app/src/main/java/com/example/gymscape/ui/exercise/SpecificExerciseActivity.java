@@ -23,6 +23,7 @@ import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exerciselist.ExerciseActivity;
 import com.example.gymscape.ui.exerciselist.ExerciseViewModel;
 import com.example.gymscape.ui.newexercise.NewExerciseViewModel;
+import com.example.gymscape.ui.newworkout.NewWorkoutActivity;
 
 public class SpecificExerciseActivity extends AppCompatActivity {
 
@@ -45,14 +46,14 @@ public class SpecificExerciseActivity extends AppCompatActivity {
 
         viewModel.setExerciseMD(exercise);
 
-        this.getSupportActionBar().setTitle(exercise.getName());
-        this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
-
         exerciseImage = findViewById(R.id.exerciseImage);
         exerciseDescription = findViewById(R.id.exerciseDescription);
         exerciseName = findViewById(R.id.exerciseName);
 
         viewModel.getExerciseMD().observe(this, exerciseData -> {
+            this.getSupportActionBar().setTitle(exerciseData.getName());
+            this.getSupportActionBar().setBackgroundDrawable(new ColorDrawable(ContextCompat.getColor(this, R.color.darkBlue)));
+
             if(exercise.getPicture().isEmpty())
                 exerciseImage.setImageResource(R.drawable.exercise_universal_picture);
             else
@@ -73,16 +74,18 @@ public class SpecificExerciseActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId() == R.id.addToWorkoutMenu)
         {
-            //do something
+            Intent intent = new Intent(this, NewWorkoutActivity.class);
+            intent.putExtra(UsedEnums.EXERCISE.toString(), exercise);
+            startActivity(intent);
             return true;
         }
         else if(item.getItemId() == R.id.deleteExerciseMenu)
         {
             if(exercise.isDatabase())
             {
+                viewModel.delete(exercise);
                 Intent intent = new Intent(this, ExerciseActivity.class);
                 intent.putExtra(UsedEnums.CATEGORY.toString(), exercise.getCategory());
-                viewModel.delete(exercise);
                 startActivity(intent);
                 finish();
                 return true;

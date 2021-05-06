@@ -3,7 +3,9 @@
     package="com.example.gymscape">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-feature android:name="android.hardware.camera"
+
+    <uses-feature
+        android:name="android.hardware.camera"
         android:required="true" />
 
     <application
@@ -14,11 +16,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymscape"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.newexercise.NewExerciseActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.newworkout.NewWorkoutActivity"></activity>
+        <activity
+            android:name=".ui.newexercise.NewExerciseActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.exercise.SpecificExerciseActivity"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.exerciselist.ExerciseActivity"
             android:screenOrientation="portrait" />
@@ -33,7 +37,7 @@
         </activity>
         <activity
             android:name=".ui.LoginActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>
