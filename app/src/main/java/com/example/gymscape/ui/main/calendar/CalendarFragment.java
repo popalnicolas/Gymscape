@@ -1,5 +1,6 @@
 package com.example.gymscape.ui.main.calendar;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,6 +22,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.Model.Workout;
 import com.example.gymscape.R;
+import com.example.gymscape.ui.UsedEnums;
+import com.example.gymscape.ui.editworkout.EditWorkoutActivity;
 import com.example.gymscape.ui.main.workout.WorkoutAdapter;
 import com.example.gymscape.ui.main.workout.WorkoutViewModel;
 
@@ -81,7 +84,9 @@ public class CalendarFragment extends Fragment implements WorkoutAdapter.OnListI
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-
+        Intent toWorkout = new Intent(getContext(), EditWorkoutActivity.class);
+        toWorkout.putExtra(UsedEnums.WORKOUT.toString(), adapter.workoutList.get(clickedItemIndex));
+        startActivity(toWorkout);
     }
 
     private int getDate(long date)

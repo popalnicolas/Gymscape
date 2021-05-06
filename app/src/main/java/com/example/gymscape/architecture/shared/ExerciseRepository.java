@@ -132,4 +132,14 @@ public class ExerciseRepository {
     {
         return allWorkouts;
     }
+
+    public void deleteWorkout(Workout workout)
+    {
+        executorService.execute(() -> workoutDAO.delete(workout));
+    }
+
+    public void updateWorkout(Workout workout)
+    {
+        executorService.execute(() -> workoutDAO.update(workout));
+    }
 }

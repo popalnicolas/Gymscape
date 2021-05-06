@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gymscape.Model.Workout;
 import com.example.gymscape.R;
 import com.example.gymscape.ui.UsedEnums;
+import com.example.gymscape.ui.editworkout.EditWorkoutActivity;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
 import com.example.gymscape.ui.newexercise.NewExerciseViewModel;
 import com.example.gymscape.ui.newworkout.NewWorkoutActivity;
@@ -67,6 +68,7 @@ public class WorkoutFragment extends Fragment implements WorkoutAdapter.OnListIt
             {
                 if(w.getDate() == currentDate) {
                     allWorkouts.add(w);
+                    viewModel.setIsWorkout(true);
                 }
             }
             adapter.notifyDataSetChanged();
@@ -75,7 +77,8 @@ public class WorkoutFragment extends Fragment implements WorkoutAdapter.OnListIt
         });
 
         viewModel.isWorkout().observe(getActivity(), isWorkout ->{
-            if(isWorkout)
+            Log.i("Is workout?", isWorkout+"");
+            if(!isWorkout)
                 textView.setText("No planned workouts for today.");
             else
                 textView.setText("");
@@ -86,9 +89,9 @@ public class WorkoutFragment extends Fragment implements WorkoutAdapter.OnListIt
 
     @Override
     public void onListItemClick(int clickedItemIndex) {
-        //@TODO: Intent toWorkout = new Intent(getContext(), EditDeleteWorkoutActivity.class);
-        //Intent toWorkout = new Intent(getContext(), NewWorkoutActivity.class);
-        //startActivity(toWorkout);
+        Intent toWorkout = new Intent(getContext(), EditWorkoutActivity.class);
+        toWorkout.putExtra(UsedEnums.WORKOUT.toString(), adapter.workoutList.get(clickedItemIndex));
+        startActivity(toWorkout);
     }
 
     private int getDate(long date)
