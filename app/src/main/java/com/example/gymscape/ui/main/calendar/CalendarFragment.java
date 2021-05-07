@@ -22,6 +22,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.Model.Workout;
 import com.example.gymscape.R;
+import com.example.gymscape.SharedFunctions;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.editworkout.EditWorkoutActivity;
 import com.example.gymscape.ui.main.workout.WorkoutAdapter;
@@ -53,7 +54,7 @@ public class CalendarFragment extends Fragment implements WorkoutAdapter.OnListI
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(CalendarViewModel.class);
 
         Date c = Calendar.getInstance().getTime();
-        chosenDateInt = getDate(c.getTime());
+        chosenDateInt = SharedFunctions.getDate(c.getTime());
 
         View root = inflater.inflate(R.layout.fragment_calendar, container, false);
 
@@ -71,7 +72,7 @@ public class CalendarFragment extends Fragment implements WorkoutAdapter.OnListI
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 Date chosenDate = new GregorianCalendar(year, month, dayOfMonth).getTime();
-                chosenDateInt = getDate(chosenDate.getTime());
+                chosenDateInt = SharedFunctions.getDate(chosenDate.getTime());
                 Log.i("Date", "" + chosenDateInt);
                 notifyDateChange();
             }
@@ -87,15 +88,6 @@ public class CalendarFragment extends Fragment implements WorkoutAdapter.OnListI
         Intent toWorkout = new Intent(getContext(), EditWorkoutActivity.class);
         toWorkout.putExtra(UsedEnums.WORKOUT.toString(), adapter.workoutList.get(clickedItemIndex));
         startActivity(toWorkout);
-    }
-
-    private int getDate(long date)
-    {
-        Date date1 = new Date(date);
-        String myFormat = "ddMMyyyy";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
-        String desiredFormat = dateFormat.format(date1);
-        return Integer.parseInt(desiredFormat);
     }
 
     private void notifyDateChange()

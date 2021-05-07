@@ -22,6 +22,7 @@ import com.bumptech.glide.Glide;
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.Model.Workout;
 import com.example.gymscape.R;
+import com.example.gymscape.SharedFunctions;
 import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;
@@ -85,7 +86,7 @@ public class NewWorkoutActivity extends AppCompatActivity {
             */
 
             exerciseName.setText(exerciseData.getName());
-            exerciseImageCategory.setImageResource(getResourceImage(exerciseData.getCategory()));
+            exerciseImageCategory.setImageResource(SharedFunctions.getIcon(exerciseData.getCategory()));
 
             newWorkout.setExerciseName(exerciseData.getName());
             newWorkout.setCategory(exerciseData.getCategory());
@@ -113,7 +114,7 @@ public class NewWorkoutActivity extends AppCompatActivity {
             SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
             datePicker.setText(dateFormat.format(chosenDate));
 
-            newWorkout.setDate(getDate(chosenDate.getTime()));
+            newWorkout.setDate(SharedFunctions.getDate(chosenDate.getTime()));
         });
 
         decreaseSets.setOnClickListener(v -> {
@@ -169,38 +170,5 @@ public class NewWorkoutActivity extends AppCompatActivity {
             startActivity(exerciseIntent);
             finish();
         });
-    }
-
-    private int getResourceImage(int category)
-    {
-        switch(category)
-        {
-            case 1:
-                return R.drawable.icon_core;
-            case 2:
-                return R.drawable.icon_chest;
-            case 3:
-                return R.drawable.icon_back;
-            case 4:
-                return R.drawable.icon_biceps;
-            case 5:
-                return R.drawable.icon_triceps;
-            case 6:
-                return R.drawable.icon_shoulder;
-            case 7:
-                return R.drawable.icon_legs;
-            case 8:
-                return R.drawable.icon_glutes;
-        }
-        return 0;
-    }
-
-    private int getDate(long date)
-    {
-        Date date1 = new Date(date);
-        String myFormat = "ddMMyyyy";
-        SimpleDateFormat dateFormat = new SimpleDateFormat(myFormat, Locale.UK);
-        String desiredFormat = dateFormat.format(date1);
-        return Integer.parseInt(desiredFormat);
     }
 }

@@ -16,8 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymscape"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.editworkout.EditWorkoutActivity"></activity>
-        <activity android:name=".ui.newworkout.NewWorkoutActivity" />
+        <activity android:name=".ui.editworkout.EditWorkoutActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".ui.newworkout.NewWorkoutActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ui.newexercise.NewExerciseActivity"
             android:screenOrientation="portrait" />

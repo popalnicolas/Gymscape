@@ -72,7 +72,7 @@
             android:gravity="top|start"
             android:textColor="@color/darkBlue"
             android:fontFamily="@font/pavanam"
-            android:inputType="textPersonName"
+            android:inputType="textMultiLine"
             android:padding="6dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
