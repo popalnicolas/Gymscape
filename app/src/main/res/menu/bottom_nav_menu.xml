@@ -2,11 +2,6 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_timer"
-        android:icon="@drawable/ic_stopwatch"
-        android:title="@string/title_timer" />
-
-    <item
         android:id="@+id/navigation_exercises"
         android:icon="@drawable/ic_dumbbells"
         android:title="@string/title_exercises" />

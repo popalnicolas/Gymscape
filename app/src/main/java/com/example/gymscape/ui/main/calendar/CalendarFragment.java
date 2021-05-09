@@ -92,17 +92,25 @@ public class CalendarFragment extends Fragment implements WorkoutAdapter.OnListI
 
     private void notifyDateChange()
     {
-        allWorkouts.clear();
-        for(Workout w : viewModel.getAllWorkoutsList())
-        {
-            if(w.getDate() == chosenDateInt)
-                allWorkouts.add(w);
-        }
-        adapter.notifyDataSetChanged();
 
-        if(allWorkouts.isEmpty())
-            textView.setText("No workouts for this date.");
-        else
-            textView.setText("");
+        viewModel.getAllWorkouts().observe(getActivity(), workouts -> {
+            allWorkouts.clear();
+            for(Workout w : workouts)
+            {
+                if(w.getDate() == chosenDateInt) {
+                    allWorkouts.add(w);
+                }
+            }
+            adapter.notifyDataSetChanged();
+        });
+
+        viewModel.setExerciseText(allWorkouts.isEmpty());
+
+        viewModel.getExerciseText().observe(getViewLifecycleOwner(), exerciseText -> {
+            if(exerciseText)
+                textView.setText("No workouts for this date.");
+            else
+                textView.setText("");
+        });
     }
 }

@@ -16,13 +16,30 @@ import java.util.List;
 public class CalendarViewModel extends AndroidViewModel {
 
     private ExerciseRepository repository;
+    MutableLiveData<Boolean> noExercises;
 
     public CalendarViewModel(Application app) {
         super(app);
         repository = ExerciseRepository.getInstance(app);
+        noExercises = new MutableLiveData<>();
+        noExercises.setValue(false);
+    }
+
+    public LiveData<Boolean> getExerciseText()
+    {
+        return  noExercises;
+    }
+
+    public void setExerciseText(boolean exerciseText)
+    {
+        noExercises.setValue(exerciseText);
     }
 
 
+    public LiveData<List<Workout>> getAllWorkouts()
+    {
+        return repository.getAllWorkouts();
+    }
 
     public List<Workout> getAllWorkoutsList()
     {

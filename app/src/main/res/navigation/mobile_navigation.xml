@@ -3,35 +3,51 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_workout">
-
-    <fragment
-        android:id="@+id/navigation_timer"
-        android:name="com.example.gymscape.ui.main.timer.TimerFragment"
-        android:label="@string/title_timer"
-        tools:layout="@layout/fragment_timer" />
+    app:startDestination="@+id/navigation_exercises">
 
     <fragment
         android:id="@+id/navigation_exercises"
         android:name="com.example.gymscape.ui.main.exercises.ExercisesFragment"
         android:label="@string/title_exercises"
-        tools:layout="@layout/fragment_exercises" />
+        tools:layout="@layout/fragment_exercises" >
+        <action
+            android:id="@+id/action_navigation_exercises_to_navigation_workout"
+            app:destination="@id/navigation_workout" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_workout"
         android:name="com.example.gymscape.ui.main.workout.WorkoutFragment"
         android:label="@string/title_workout"
-        tools:layout="@layout/fragment_workout" />
+        tools:layout="@layout/fragment_workout" >
+        <action
+            android:id="@+id/action_navigation_workout_to_navigation_exercises"
+            app:destination="@id/navigation_exercises" />
+        <action
+            android:id="@+id/action_navigation_workout_to_navigation_calendar"
+            app:destination="@id/navigation_calendar" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_calendar"
         android:name="com.example.gymscape.ui.main.calendar.CalendarFragment"
         android:label="@string/title_calendar"
-        tools:layout="@layout/fragment_calendar" />
+        tools:layout="@layout/fragment_calendar" >
+        <action
+            android:id="@+id/action_navigation_calendar_to_navigation_workout"
+            app:destination="@id/navigation_workout" />
+        <action
+            android:id="@+id/action_navigation_calendar_to_navigation_profile"
+            app:destination="@id/navigation_profile" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_profile"
         android:name="com.example.gymscape.ui.main.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_navigation_profile_to_navigation_calendar"
+            app:destination="@id/navigation_calendar" />
+    </fragment>
 </navigation>
