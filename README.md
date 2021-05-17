@@ -15,7 +15,7 @@ Gymscape is an android app, which will track your progress in gym. It is based o
 - Option to add, delete or edit exercise :heavy_check_mark:
 - Which parts of body is used in specific excerise :heavy_check_mark:
 - Picture how to train specific excerise correctly :heavy_check_mark:
-- Login option
+- Login option :heavy_check_mark:
 
 ### Could have
 - Planner for future excersise :heavy_check_mark:
