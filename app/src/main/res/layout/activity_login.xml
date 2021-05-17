@@ -51,7 +51,7 @@
         android:id="@+id/loginRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Don't have account? Click here to register"
+        android:text="@string/don_t_have_account_click_here_to_register"
         android:textColor="@color/whiteBlue"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"

@@ -29,7 +29,6 @@
                 android:layout_height="0dp"
                 android:layout_weight="5"
                 android:textSize="18sp"
-                android:text="SDASD"
                 android:textColor="@color/lightBlue"
                 android:gravity="center_vertical"
                 android:fontFamily="@font/poppins"/>
@@ -40,8 +39,7 @@
                 android:layout_height="0dp"
                 android:layout_weight="4"
                 android:textColor="@color/whiteBlue"
-                android:fontFamily="@font/pavanam"
-                android:text="4 sets | 120kg" />
+                android:fontFamily="@font/pavanam" />
 
         </LinearLayout>
 

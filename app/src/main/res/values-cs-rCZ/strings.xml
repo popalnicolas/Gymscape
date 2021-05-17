@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">GymScape</string>
+    <string name="title_activity_main">GymScape</string>
+
+    <string name="title_exercises">Cvičení</string>
+    <string name="title_workout">Workout</string>
+    <string name="title_calendar">Kalendář</string>
+    <string name="title_profile">Profil</string>
+
+    <string name="username">Uživatelské Jméno</string>
+    <string name="password">heslo</string>
+    <string name="register">Registrovat</string>
+    <string name="login">Přihlásit se</string>
+
+    <string name="muscleCore">BŘICHO</string>
+    <string name="muscleChest">PRSA</string>
+    <string name="muscleBack">ZÁDA</string>
+    <string name="muscleBiceps">BICEPS</string>
+    <string name="muscleTriceps">TRICEPS</string>
+    <string name="muscleShoulders">RAMENA</string>
+    <string name="muscleLegs">NOHY</string>
+    <string name="muscleGlutes">HÝŽDĚ</string>
+    <string name="muscleAll">VŠE</string>
+
+    <string name="settings">Nastavení</string>
+    <string name="stats">Statistika</string>
+    <string name="trophy">Trofeje</string>
+    <string name="logout">Odhlásit se</string>
+    <string name="dateCapital">DATUM</string>
+    <string name="setsCapital">SETY</string>
+    <string name="weightCapital">VÁHA</string>
+    <string name="delete">smazat</string>
+    <string name="cancel">zrušit</string>
+    <string name="date">datum</string>
+    <string name="weight_in_kgs">hmotnost v kg</string>
+    <string name="don_t_have_account_click_here_to_register">Nemáte účet? Zaregistrujte se kliknutím sem</string>
+    <string name="nameCapital">NÁZEV</string>
+    <string name="descriptionCapital">POPIS</string>
+    <string name="take_photo">VYFOTIT</string>
+    <string name="add">PŘIDAT</string>
+    <string name="save">uložit</string>
+    <string name="repeat_password">zopakovat heslo</string>
+    <string name="already_registered_click_here_to_login">Již jste registrován? Klikněte sem pro přihlášení.</string>
+    <string name="you_are_logged_as">Jste přihlášeni jako:</string>
+    <string name="delete_all_data">Smazat Všechny Data</string>
+</resources>

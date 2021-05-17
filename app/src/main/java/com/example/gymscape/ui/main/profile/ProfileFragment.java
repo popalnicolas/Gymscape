@@ -46,6 +46,7 @@ public class ProfileFragment extends Fragment {
         textLogout.setOnClickListener(v -> {
             firebaseAuth.signOut();
             startActivity(new Intent(getContext(), LoginActivity.class));
+            getActivity().finish();
         });
 
         deleteAll = root.findViewById(R.id.deleteAllLayout);

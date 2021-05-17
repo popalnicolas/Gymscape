@@ -25,7 +25,6 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/pavanam"
                 android:padding="24dp"
-                android:text="TextView"
                 android:textColor="@color/whiteBlue"
                 android:layout_marginBottom="140dp"
                 app:layout_constraintEnd_toEndOf="parent"

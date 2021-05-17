@@ -10,7 +10,6 @@
         android:id="@+id/iconMuscle"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:src="@drawable/icon_back"
         android:layout_weight="1" />
 
         <TextView
@@ -19,7 +18,6 @@
             android:layout_height="match_parent"
             android:layout_weight="8"
             android:textSize="18sp"
-            android:text="SDASD"
             android:layout_marginStart="16dp"
             android:textColor="@color/lightBlue"
             android:gravity="center_vertical"

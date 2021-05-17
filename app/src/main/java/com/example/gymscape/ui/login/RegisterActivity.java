@@ -65,6 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
                         {
+                            firebaseAuth.getCurrentUser().sendEmailVerification();
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("email", emailAddress.getText().toString());
                             editor.apply();

@@ -2,7 +2,6 @@
     <string name="app_name">GymScape</string>
     <string name="title_activity_main">GymScape</string>
 
-    <string name="title_timer">Timer</string>
     <string name="title_exercises">Exercises</string>
     <string name="title_workout">Workout</string>
     <string name="title_calendar">Calendar</string>
@@ -27,4 +26,21 @@
     <string name="stats">Statistics</string>
     <string name="trophy">Trophies</string>
     <string name="logout">Logout</string>
+    <string name="dateCapital">DATE</string>
+    <string name="setsCapital">SETS</string>
+    <string name="weightCapital">WEIGHT</string>
+    <string name="delete">delete</string>
+    <string name="cancel">cancel</string>
+    <string name="date">date</string>
+    <string name="weight_in_kgs">weight in kgs</string>
+    <string name="don_t_have_account_click_here_to_register">Don\'t have account? Click here to register</string>
+    <string name="nameCapital">NAME</string>
+    <string name="descriptionCapital">DESCRIPTION</string>
+    <string name="take_photo">TAKE PHOTO</string>
+    <string name="add">ADD</string>
+    <string name="save">save</string>
+    <string name="repeat_password">repeat password</string>
+    <string name="already_registered_click_here_to_login">Already registered? Click here to login.</string>
+    <string name="you_are_logged_as">You are logged as:</string>
+    <string name="delete_all_data">Delete All Data</string>
 </resources>
