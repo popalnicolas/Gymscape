@@ -1,19 +1,26 @@
 package com.example.gymscape.ui.main.profile;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+import com.example.gymscape.architecture.shared.ExerciseRepository;
 
-public class ProfileViewModel extends ViewModel {
+public class ProfileViewModel extends AndroidViewModel {
 
-    private MutableLiveData<String> mText;
+    ExerciseRepository repository;
 
-    public ProfileViewModel() {
-        mText = new MutableLiveData<>();
-        mText.setValue("John Doe");
+    public ProfileViewModel(Application application)
+    {
+        super(application);
+        repository = ExerciseRepository.getInstance(application);
     }
 
-    public LiveData<String> getText() {
-        return mText;
+    public void deleteAll()
+    {
+        repository.deleteAllExercises();
+        repository.deleteAllWorkouts();
     }
 }

@@ -102,9 +102,14 @@ public class ExerciseRepository {
         return allExercisesDao;
     }
 
-    public void deleteAll()
+    public void deleteAllExercises()
     {
         executorService.execute(exerciseDAO::deleteAll);
+    }
+
+    public void deleteAllWorkouts()
+    {
+        executorService.execute(workoutDAO::deleteAll);
     }
 
     public void insert (Exercise exercise)

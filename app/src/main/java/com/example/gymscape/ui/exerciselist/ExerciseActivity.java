@@ -3,19 +3,16 @@ package com.example.gymscape.ui.exerciselist;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import com.example.gymscape.Model.Exercise;
 import com.example.gymscape.R;
-import com.example.gymscape.ui.LoginActivity;
 import com.example.gymscape.ui.MainActivity;
 import com.example.gymscape.ui.UsedEnums;
 import com.example.gymscape.ui.exercise.SpecificExerciseActivity;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
     <EditText
         android:id="@+id/loginUsername"
@@ -12,7 +12,7 @@
         android:layout_height="30dp"
         android:background="@drawable/input_round"
         android:ems="10"
-        android:hint="username"
+        android:hint="email address"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textColor="@color/blackBlue"
@@ -51,7 +51,7 @@
         android:id="@+id/loginRegister"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register"
+        android:text="Don't have account? Click here to register"
         android:textColor="@color/whiteBlue"
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -73,7 +73,7 @@
             android:fontFamily="@font/poppins"
             android:text="@string/app_name"
             android:textColor="@color/whiteBlue"
-            android:textSize="28dp"
+            android:textSize="28sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
