@@ -1,5 +1,12 @@
 # Gymscape :weight_lifting:
 
+## Table of Contents
+[What is Gymscape](#what-is-gymscape)
+[Moscow Requirements](#moscow-requirements)
+[Figma Design](#figma-design)
+[Preview and some of the functions](#preview-and-some-of-the-functions)
+[Video Demonstration](#video-demonstration)
+
 ## What is Gymscape
 Gymscape is an android app, which will track your progress in gym. It is based on gym experience, where each exercises from each trainings needed to be written in a notedpad, which is harder to lookup or easily lost. In Gymscape, all progress and previous weight used in excerises can be saved and searched in it, so it can be easily find out, how much weight was used, so user can push his/her progress.
 
@@ -38,3 +45,49 @@ Before coding, design of the app was created. Design was created in Figma, so de
 [Link on figma design](https://www.figma.com/file/yenDADhhSUkZ88sZEOyKb6/GymScape?node-id=0%3A1)
 
 ## Preview and some of the functions
+
+### Login Page
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214632_GymScape.jpg "Login Page")
+
+First thing users see after installing Gymscape is the login page. They can login with their account or register in new Activity, which will create new account and log them in.
+
+### Exercises
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214646_GymScape.jpg "Exercises")
+
+After successful login or register, user is taken to Exercise page, where exercises are categorized by muscles. Each category holds predefined exercises taken from webservices.
+If user needs add exercise, it can be done by clicking on floating button in each category.
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214749_GymScape.jpg "Add Exercise")
+
+For adding new exercise, user needs to name the exercise, describe how to do the exercise and take a picture how does the exercise look like.
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214811_GymScape.jpg "Delete Exercise/Add to workout")
+
+Exercises can be then deleted or added to workout.
+Only exercises, which user added by themselves can be deleted.
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214817_GymScape.jpg "Delete Exercise/Add to workout")
+
+Exercises, which are predefined and taken from webservices, cannot be deleted.
+
+### Workout
+
+Each exercise can be added to workout. This can be done by clicking on exercise and then adding it to workout.
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214855_GymScape.jpg "Add to workout")
+
+Exercise can be added to future or past workout by filling date. Sets and weight are optional and can be set later.
+
+### Calendar
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214925_GymScape.jpg "Calendar View")
+
+In calendar fragment, workouts can be seen by date. If there is no planned exercise, or no exercise was done, user is informed and can add workout to this date.
+
+[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214939_GymScape.jpg "Update workout")
+
+Also, if user wants to update his workout, they can do it by clicking on workout in the relevant date and change their values.
+
+## Video Demonstration
