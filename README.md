@@ -32,3 +32,9 @@ Gymscape is an android app, which will track your progress in gym. It is based o
 | --- | --- |
 | Option to look for profiles of another users | :heavy_check_mark: |
 | Track progress of another users | :heavy_check_mark: |
+
+## Figma Design
+Before coding, design of the app was created. Design was created in Figma, so designing of actual app would be easier. Figma file was uploaded with actual code to github.
+[Link on figma design](https://www.figma.com/file/yenDADhhSUkZ88sZEOyKb6/GymScape?node-id=0%3A1)
+
+## Preview and some of the functions
