@@ -90,10 +90,8 @@ public class ExerciseActivity extends AppCompatActivity implements ExerciseAdapt
     protected void onResume() {
         super.onResume();
 
-        exercises.clear();
-
-        //@TODO: do not display delete exercises
         viewModel.getAllExercisesDAO().observe(this, exercisesDAO ->{
+            exercises.clear();
             for(Exercise exercise : exercisesDAO)
             {
                 if(category == 0)
