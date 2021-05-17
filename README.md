@@ -97,4 +97,4 @@ Also, if user wants to update his workout, they can do it by clicking on workout
 
 ## Video Demonstration
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=sCNrK-n68CM
+[![Video](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=sCNrK-n68CM)
