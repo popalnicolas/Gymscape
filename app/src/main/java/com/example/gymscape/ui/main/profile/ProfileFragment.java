@@ -1,6 +1,8 @@
 package com.example.gymscape.ui.main.profile;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -51,8 +53,26 @@ public class ProfileFragment extends Fragment {
 
         deleteAll = root.findViewById(R.id.deleteAllLayout);
         deleteAll.setOnClickListener(v -> {
-            viewModel.deleteAll();
-            Toast.makeText(getActivity(), "All data deleted.", Toast.LENGTH_SHORT).show();
+
+            DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    switch (which){
+                        case DialogInterface.BUTTON_POSITIVE:
+                            viewModel.deleteAll();
+                            Toast.makeText(getActivity(), "All data deleted.", Toast.LENGTH_SHORT).show();
+                            break;
+
+                        case DialogInterface.BUTTON_NEGATIVE:
+                            // do nothing
+                            break;
+                    }
+                }
+            };
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+            builder.setMessage("All saved workouts and exercises created by you will be deleted. Do you want to continue?").setPositiveButton("Yes", dialogClickListener)
+                    .setNegativeButton("No", dialogClickListener).show();
         });
 
         return root;

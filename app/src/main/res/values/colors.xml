@@ -14,4 +14,7 @@
     <color name="lightBlue">#3282b8</color>
     <color name="whiteBlue">#bbe1fa</color>
     <color name="whiteBlueWShadow">#8CA9BB</color>
+
+    <color name="redCancel">#bd2031</color>
+    <color name="greenConfirm">#00693e</color>
 </resources>

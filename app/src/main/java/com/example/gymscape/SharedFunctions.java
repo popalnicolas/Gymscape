@@ -5,6 +5,8 @@ import com.example.gymscape.R;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Locale;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SharedFunctions {
     public static int getDate(long date)
@@ -39,5 +41,12 @@ public class SharedFunctions {
                 return R.drawable.icon_glutes;
         }
         return icon;
+    }
+
+    public static boolean isEmailValid(String email)
+    {
+        Pattern email_regex = Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = email_regex.matcher(email.trim());
+        return matcher.find();
     }
 }

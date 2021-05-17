@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gymscape.R;
+import com.example.gymscape.SharedFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -54,10 +55,14 @@ public class RegisterActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.registerButton);
 
         registerButton.setOnClickListener(v -> {
-            if(!password.getText().toString().equals(password2.getText().toString()))
+            if(password.getText().toString().isEmpty() || password2.getText().toString().isEmpty() || emailAddress.getText().toString().isEmpty())
+                Toast.makeText(this, "Please fill all information.", Toast.LENGTH_SHORT).show();
+            else if(!password.getText().toString().equals(password2.getText().toString()))
                 Toast.makeText(this, "Passwords do not match.", Toast.LENGTH_SHORT).show();
             else if(password.getText().toString().length() < 6)
                 Toast.makeText(this, "Password must have at least 6 characters", Toast.LENGTH_SHORT).show();
+            else if(!SharedFunctions.isEmailValid(emailAddress.getText().toString()))
+                Toast.makeText(this, "Wrong email format.", Toast.LENGTH_SHORT).show();
             else
             {
                 firebaseAuth.createUserWithEmailAndPassword(emailAddress.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -74,7 +79,7 @@ public class RegisterActivity extends AppCompatActivity {
                             finish();
                         }
                         else
-                            Toast.makeText(RegisterActivity.this, "Something went wrong. This email is already registered.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(RegisterActivity.this, "Email is already registered.", Toast.LENGTH_SHORT).show();
                     }
                 });
             }

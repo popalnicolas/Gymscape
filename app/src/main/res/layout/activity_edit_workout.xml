@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="48dp"
         android:text="@string/common_google_play_services_update_button"
+        android:backgroundTint="@color/greenConfirm"
         app:layout_constraintBottom_toTopOf="@+id/cancelWorkoutButton"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -81,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="48dp"
         android:text="@string/delete"
-        android:backgroundTint="#bd2031"
+        android:backgroundTint="@color/redCancel"
         app:layout_constraintBottom_toTopOf="@+id/cancelWorkoutButton"
         app:layout_constraintEnd_toEndOf="parent" />
 

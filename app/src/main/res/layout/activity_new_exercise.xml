@@ -90,6 +90,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/add"
+            android:backgroundTint="@color/greenConfirm"
             android:onClick="saveExercise"
             android:layout_marginStart="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -100,6 +101,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/cancel"
+            android:backgroundTint="@color/redCancel"
             android:layout_marginEnd="80dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />

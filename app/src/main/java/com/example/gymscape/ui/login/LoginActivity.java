@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.gymscape.R;
+import com.example.gymscape.SharedFunctions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -58,23 +59,26 @@ public class LoginActivity extends AppCompatActivity {
         loginButton = findViewById(R.id.loginButton);
 
         loginButton.setOnClickListener(v -> {
-            firebaseAuth.signInWithEmailAndPassword(emailAddress.getText().toString().trim(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                @Override
-                public void onComplete(@NonNull Task<AuthResult> task) {
-                    if(task.isSuccessful())
-                    {
-                        SharedPreferences.Editor editor = preferences.edit();
-                        editor.putString("email", emailAddress.getText().toString());
-                        editor.apply();
-                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                        finish();
+            if(emailAddress.getText().toString().isEmpty() || password.getText().toString().isEmpty())
+                Toast.makeText(this, "Please fill all information.", Toast.LENGTH_SHORT).show();
+            else if(!SharedFunctions.isEmailValid(emailAddress.getText().toString()))
+                Toast.makeText(this, "Wrong email format.", Toast.LENGTH_SHORT).show();
+            else {
+                firebaseAuth.signInWithEmailAndPassword(emailAddress.getText().toString().trim(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putString("email", emailAddress.getText().toString());
+                            editor.apply();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "Something went wrong. Try again or register yourself.", Toast.LENGTH_LONG).show();
+                        }
                     }
-                    else
-                    {
-                        Toast.makeText(LoginActivity.this, "Something went wrong. Try again or register yourself.", Toast.LENGTH_LONG).show();
-                    }
-                }
-            });
+                });
+            }
         });
     }
 }

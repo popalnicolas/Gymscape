@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:text="@string/save"
         android:layout_margin="48dp"
+        android:backgroundTint="@color/greenConfirm"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -80,6 +81,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/cancel"
+        android:backgroundTint="@color/redCancel"
         android:layout_margin="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />

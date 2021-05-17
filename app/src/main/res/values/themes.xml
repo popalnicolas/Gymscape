@@ -16,4 +16,17 @@
         <item name="android:windowBackground">@color/blackBlue</item>
     </style>
 
+    <style name="CalenderViewCustom" parent="Theme.MaterialComponents">
+        <item name="colorAccent">@color/blue</item>
+        <item name="colorPrimary">@color/whiteBlue</item>
+    </style>
+
+    <style name="CalenderViewDateCustomText" >
+        <item name="android:textColor">@color/whiteBlue</item>
+    </style>
+
+    <style name="CalenderViewWeekCustomText" >
+        <item name="android:textColor">@color/whiteBlue</item>
+    </style>
+
 </resources>
