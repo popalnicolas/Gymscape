@@ -96,3 +96,5 @@ In calendar fragment, workouts can be seen by date. If there is no planned exerc
 Also, if user wants to update his workout, they can do it by clicking on workout in the relevant date and change their values.
 
 ## Video Demonstration
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/YOUTUBE_VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=sCNrK-n68CM
