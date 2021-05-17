@@ -1,8 +1,7 @@
 # Gymscape :weight_lifting:
 
 ## Table of Contents
-[What is Gymscape](#what-is-gymscape)
-
+- [What is Gymscape](#what-is-gymscape)
 - [Moscow Requirements](#moscow-requirements)
 - [Figma Design](#figma-design)
 - [Preview and some of the functions](#preview-and-some-of-the-functions)
