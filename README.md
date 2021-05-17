@@ -52,28 +52,28 @@ Before coding, design of the app was created. Design was created in Figma, so de
 
 ### Login Page
 
-[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214632_GymScape.jpg "Login Page")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214632_GymScape.jpg" width="400" alt="Login Page" />
 
 First thing users see after installing Gymscape is the login page. They can login with their account or register in new Activity, which will create new account and log them in.
 
 ### Exercises
 
-[image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214646_GymScape.jpg "Exercises")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214646_GymScape.jpg" width="400" alt="Exercises" />
 
 After successful login or register, user is taken to Exercise page, where exercises are categorized by muscles. Each category holds predefined exercises taken from webservices.
 
 If user needs add exercise, it can be done by clicking on floating button in each category.
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214749_GymScape.jpg "Add Exercise")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214749_GymScape.jpg" width="400" alt="Add Exercise" />
 
 For adding new exercise, user needs to name the exercise, describe how to do the exercise and take a picture how does the exercise look like.
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214811_GymScape.jpg "Delete Exercise/Add to workout")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214811_GymScape.jpg" width="400" alt="Add to workout" />
 
 Exercises can be then deleted or added to workout.
 Only exercises, which user added by themselves can be deleted.
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214817_GymScape.jpg "Delete Exercise/Add to workout")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214817_GymScape.jpg" width="400" alt="Delete Exercise/Add to workout" />
 
 Exercises, which are predefined and taken from webservices, cannot be deleted.
 
@@ -81,17 +81,17 @@ Exercises, which are predefined and taken from webservices, cannot be deleted.
 
 Each exercise can be added to workout. This can be done by clicking on exercise and then adding it to workout.
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214855_GymScape.jpg "Add to workout")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214855_GymScape.jpg" width="400" alt="Add to workout" />
 
 Exercise can be added to future or past workout by filling date. Sets and weight are optional and can be set later.
 
 ### Calendar
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214925_GymScape.jpg "Calendar View")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214925_GymScape.jpg" width="400" alt="Calendar view" />
 
 In calendar fragment, workouts can be seen by date. If there is no planned exercise, or no exercise was done, user is informed and can add workout to this date.
 
-![image](https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214939_GymScape.jpg "Update workout")
+<img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214939_GymScape.jpg" width="400" alt="Update workout" />
 
 Also, if user wants to update his workout, they can do it by clicking on workout in the relevant date and change their values.
 
