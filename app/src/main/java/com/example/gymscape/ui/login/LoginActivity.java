@@ -26,7 +26,6 @@ public class LoginActivity extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     EditText emailAddress, password;
     Button loginButton;
-    SharedPreferences preferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,9 +43,7 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-
-        preferences = getSharedPreferences("profile", MODE_PRIVATE);
-
+        
         loginRegister = findViewById(R.id.loginRegister);
 
         loginRegister.setOnClickListener(v -> {
@@ -69,9 +66,6 @@ public class LoginActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             if(firebaseAuth.getCurrentUser().isEmailVerified()) {
-                                SharedPreferences.Editor editor = preferences.edit();
-                                editor.putString("email", emailAddress.getText().toString());
-                                editor.apply();
                                 startActivity(new Intent(getApplicationContext(), MainActivity.class));
                                 finish();
                             }
