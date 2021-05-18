@@ -47,9 +47,7 @@ public class NewExerciseActivity extends AppCompatActivity {
     int category;
 
     File mediaFile;
-    Bitmap photo;
     final int CAMERA_REQUEST = 1;
-    boolean pictureTaken = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,10 +88,10 @@ public class NewExerciseActivity extends AppCompatActivity {
             Toast.makeText(this, "Exercise name is too long.", Toast.LENGTH_SHORT).show();
         else if(nameField.getText().toString().isEmpty() || descriptionField.getText().toString().isEmpty())
             Toast.makeText(this, "Description or/and exercise name are empty.", Toast.LENGTH_SHORT).show();
-        else if(!pictureTaken)
+        else if(!viewModel.getPictureTaken().getValue())
             Toast.makeText(this, "You must take a picture of exercise.", Toast.LENGTH_SHORT).show();
         else {
-            storeImage(photo);
+            storeImage(viewModel.getExercisePhoto().getValue());
             viewModel.insert(new Exercise(nameField.getText().toString(), category, descriptionField.getText().toString(), mediaFile.getAbsolutePath(), true));
             Intent intent = new Intent(this, ExerciseActivity.class);
             intent.putExtra(UsedEnums.CATEGORY.toString(), category);
@@ -108,12 +106,12 @@ public class NewExerciseActivity extends AppCompatActivity {
 
         if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK)
         {
-            pictureTaken = true;
-            photo = (Bitmap) data.getExtras().get("data");
-            previewImage.setImageBitmap(photo);
+            viewModel.setPictureTaken(true);
+            viewModel.setExercisePhoto((Bitmap) data.getExtras().get("data"));
+            previewImage.setImageBitmap(viewModel.getExercisePhoto().getValue());
         }
         else
-            pictureTaken = false;
+            viewModel.setPictureTaken(false);
     }
 
     private void storeImage(Bitmap image) {
@@ -150,5 +148,12 @@ public class NewExerciseActivity extends AppCompatActivity {
         String mImageName="EXERCISE_"+ timeStamp +".jpg";
         mediaFile = new File(mediaStorageDir.getPath() + File.separator + mImageName);
         return mediaFile;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        previewImage.setImageBitmap(viewModel.getExercisePhoto().getValue());
     }
 }

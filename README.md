@@ -54,7 +54,7 @@ Before coding, design of the app was created. Design was created in Figma, so de
 
 <img src="https://raw.githubusercontent.com/popalnicolas/Gymscape/master/screenshots/Screenshot_20210517-214632_GymScape.jpg" width="400" alt="Login Page" />
 
-First thing users see after installing Gymscape is the login page. They can login with their account or register in new Activity, which will create new account and log them in.
+First thing users see after installing Gymscape is the login page. They can login with their account or register in new Activity, which will create new account and log them in. Also users can reset they password by clicking on Reset password and filling their email address.
 
 ### Exercises
 
