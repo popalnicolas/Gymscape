@@ -31,18 +31,14 @@ public class ProfileFragment extends Fragment {
 
     FirebaseAuth firebaseAuth;
 
-    SharedPreferences preferences;
-
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         firebaseAuth = FirebaseAuth.getInstance();
         viewModel = new ViewModelProvider(this, ViewModelProvider.AndroidViewModelFactory.getInstance(getActivity().getApplication())).get(ProfileViewModel.class);
         View root = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        preferences = getActivity().getSharedPreferences("profile", Context.MODE_PRIVATE);
-
         textUsername = root.findViewById(R.id.textUsername);
-        textUsername.setText(preferences.getString("email", "").toLowerCase());
+        textUsername.setText(firebaseAuth.getCurrentUser().getEmail().toLowerCase());
 
         textLogout = root.findViewById(R.id.logoutLayout);
         textLogout.setOnClickListener(v -> {
