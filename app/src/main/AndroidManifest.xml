@@ -16,8 +16,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gymscape"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.login.RegisterActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ui.login.ResetPasswordActivity"></activity>
+        <activity
+            android:name=".ui.login.RegisterActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.editworkout.EditWorkoutActivity"
             android:screenOrientation="portrait" />
@@ -47,4 +49,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

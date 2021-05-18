@@ -22,7 +22,7 @@ import com.example.gymscape.ui.MainActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextView loginRegister;
+    TextView loginRegister, passwordReset;
     FirebaseAuth firebaseAuth;
     EditText emailAddress, password;
     Button loginButton;
@@ -43,11 +43,17 @@ public class LoginActivity extends AppCompatActivity {
             startActivity(new Intent(this, MainActivity.class));
             finish();
         }
-        
+
         loginRegister = findViewById(R.id.loginRegister);
+        passwordReset = findViewById(R.id.passwordReset);
 
         loginRegister.setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterActivity.class));
+            finish();
+        });
+
+        passwordReset.setOnClickListener(v -> {
+            startActivity(new Intent(this, ResetPasswordActivity.class));
             finish();
         });
 
