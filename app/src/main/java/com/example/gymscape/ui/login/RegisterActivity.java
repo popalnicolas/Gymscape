@@ -65,7 +65,7 @@ public class RegisterActivity extends AppCompatActivity {
                 Toast.makeText(this, "Wrong email format.", Toast.LENGTH_SHORT).show();
             else
             {
-                firebaseAuth.createUserWithEmailAndPassword(emailAddress.getText().toString(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                firebaseAuth.createUserWithEmailAndPassword(emailAddress.getText().toString().trim(), password.getText().toString()).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful())
@@ -74,8 +74,9 @@ public class RegisterActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putString("email", emailAddress.getText().toString());
                             editor.apply();
+                            firebaseAuth.signOut();
                             Toast.makeText(RegisterActivity.this, "Registration was successful. Account created.", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
                             finish();
                         }
                         else

@@ -68,13 +68,17 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putString("email", emailAddress.getText().toString());
-                            editor.apply();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                            finish();
+                            if(firebaseAuth.getCurrentUser().isEmailVerified()) {
+                                SharedPreferences.Editor editor = preferences.edit();
+                                editor.putString("email", emailAddress.getText().toString());
+                                editor.apply();
+                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                                finish();
+                            }
+                            else
+                                Toast.makeText(LoginActivity.this, "You need to verify your email.", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Something went wrong. Try again or register yourself.", Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this, "This email is not registered yet.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
